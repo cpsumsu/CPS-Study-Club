@@ -8,11 +8,14 @@
 ### `pull` - 下載與合併
 > pull = fetch and merge
 
-在提交或上傳前，把遠端倉庫下載和合併到本地倉庫以避免發生不同步衝突。
+每次在提交或上傳前，把遠端倉庫下載和合併到本地倉庫以避免發生不同步衝突。
+
 ```console
 git pull origin main
 ```
+<img width="626" alt="git pull" src="https://user-images.githubusercontent.com/82365010/182049854-914d723e-8709-4a59-9939-e239a549ef76.png">
 
+有更新的時候就會顯示出下載的大小與什麼檔案有改變。沒有更新的話則會顯示 `Already up to date`.
 
 ---
 
@@ -25,14 +28,14 @@ git fetch
 # or
 git fetch orign
 ```
-> 把遠端倉庫的分支`branch_name`獲取到本地倉庫
+> 把遠端倉庫的分支 `branch_name` 獲取到本地倉庫
 ```console
 git fetch origin <branch_name>
 ```
 
 <img width="620" alt="Screenshot 2022-08-01 at 12 17 40 AM" src="https://user-images.githubusercontent.com/82365010/182049282-6ca6356c-b98a-48f3-8d0b-3695c700424c.png">
 
-我們可以用`git status`來查看遠端跟本地的分別。
+我們可以用 `git status` 來查看遠端跟本地的分別。
 
 當遠端倉庫有相較本地更新版本的時候，我們就可以把它合併到本地。
 
