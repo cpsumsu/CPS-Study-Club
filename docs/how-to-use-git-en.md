@@ -39,7 +39,8 @@ Simply means making changes on your local machine, then upload it to the remote 
 ### How git recognize our changes?
 Git will automatically detect any changes of all the files under the repository, but it won't save it without you explicitly tell git to store the changes.
 And it can show you where's changed.
-1. Show what's changed
+
+### Show what's changed
 ```console
 git status
 ```
@@ -49,7 +50,28 @@ git status
 > Another case would be making changes to a existing file.
 <img width="627" alt="Screenshot 2022-07-31 at 10 26 36 PM" src="https://user-images.githubusercontent.com/82365010/182046009-51a69bf2-e34c-429a-93e3-8e89dfcd521a.png">
 
+### Save the changes
+Here we add the changed file to the staging area (storing in somewhere and waiting for the next commit), commit is basically means saving the changes as a snapshot, where we can revert our codes to a specific version when we messed up something in the future.
+1. Add the changed files
+```console
+# git add <filename>
+git add naming-convention.md
+```
+> It will show nothing if adding is successful.
+2. Commit the changes
+```console
+git commit -m "add file - naming-convention"
+```
+> It's important to attach the commit message with `-m`, so that the others understands what's your commit all about.
 
+<img width="439" alt="commit and commit message" src="https://user-images.githubusercontent.com/82365010/182046398-7ca51139-3dc3-4a53-ac3a-bbe98e006d86.png">
 
+## Ready to push
+After finish the commit of the changes files, you're now able to push your changes to the remote repository!
+```console
+# git push <remote-repository> <remote-branch>
+git push origin main
+```
+> origin would be `git@github.com:cpsumsu/CPS-Study-Club.git` and created by default when we clone the repository.
 
-
+---
