@@ -2,6 +2,7 @@
 Github is powerful of its collaboration tools that allows everyone to make contributions to any public repository (project). But how can we contribute (make changes) to a repository?
 
 ## How to Contribute?
+Before making any changes, we need to clone (download) the repository from remote to your local machine.
 1. Have access to the repository
 > If you have access to a repository, which means you can do a push, merge or other actions. You can just clone the repository to your local machine, make changes and push it to the remote repository.
 
@@ -31,3 +32,24 @@ git clone git@github.com:cpsumsu/CPS-Study-Club.git
 # If you want to clone only the content of the repository without the root directory
 git clone git@github.com:cpsumsu/CPS-Study-Club.git .
 ```
+
+## Make Contribution
+Simply means making changes on your local machine, then upload it to the remote repository. To do so, we need git to recognize the changes of the file.
+
+### How git recognize our changes?
+Git will automatically detect any changes of all the files under the repository, but it won't save it without you explicitly tell git to store the changes.
+And it can show you where's changed.
+1. Show what's changed
+```console
+git status
+```
+> For example, when I create a new file, it shows the `untracked files:` and the name of the files.
+<img width="615" alt="git status" src="https://user-images.githubusercontent.com/82365010/182045892-c9f952b3-3567-4dd6-a55a-62c1215d2276.png">
+
+> Another case would be making changes to a existing file.
+<img width="627" alt="Screenshot 2022-07-31 at 10 26 36 PM" src="https://user-images.githubusercontent.com/82365010/182046009-51a69bf2-e34c-429a-93e3-8e89dfcd521a.png">
+
+
+
+
+
