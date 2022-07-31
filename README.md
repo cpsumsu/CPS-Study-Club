@@ -18,4 +18,7 @@
 我們會使用Github來存放所有人的筆記。Github，一個以git為核心的線上協作平台，能夠記錄不同版本(每一次更新可以當成一個版本)的文檔資料。而且對程式碼的引用很完善，可以滿足我們多人協作去做筆記和準備代碼相關的文檔。當然Github最主要的用處還是多人協作代碼項目，但是我們用來存放筆記也不是不可。
 
 ### 詳情請看以下連結
-* [Github 使用方法](/docs/how-to-use-git-en.md)
+* [Github 使用方法(英文)](/docs/how-to-use-git-en.md)
+* [命名規範](/docs/naming-convention.md)
+
+---
