@@ -1,4 +1,4 @@
-# Welcome to cyber-security
+*Welcome to cyber-security*
 
 ## Prerequisites
 
@@ -12,12 +12,14 @@ To have a basic understanding of the following:
 6. Learn MySQL
 7. Learn python
 
-# Where to learn
+## Where to learn
 
-HTB Academy https://academy.hackthebox.com/
+[HTB Academy](https://academy.hackthebox.com/)
 
-Cisco Academy https://www.netacad.com/zh-hant
+[Cisco Academy](https://www.netacad.com/zh-hant)
 
-# Useful links
+## Useful links
 
 Explain Linux Command https://explainshell.com/
+
+> Don't give up learning --Me
