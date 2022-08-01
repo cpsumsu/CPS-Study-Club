@@ -248,12 +248,11 @@ Find pathname
 -print 打印匹配之文件
 -exec 匹配文件之上再執行shell語句
 
-
-find ./x -name “*.txt” -exec cp {} /opt/ \;
+```find ./x -name “\*.txt” -exec cp {} /opt/ \;```
 find 找
 ./x 當前目下的x folder
 -name 文件名為
-“*.txt” txt後綴的
+“\*.txt” txt後綴的
 -exec 執行
 cp 複製
 {} 配匹文件名
