@@ -249,6 +249,7 @@ Find pathname
 -exec 匹配文件之上再執行shell語句
 
 ```find ./x -name “\*.txt” -exec cp {} /opt/ \;```
+
 find 找
 ./x 當前目下的x folder
 -name 文件名為
