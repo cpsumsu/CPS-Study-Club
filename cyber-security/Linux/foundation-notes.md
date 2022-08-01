@@ -1,42 +1,65 @@
-# Linux
+```
+由於是個人筆記所以很亂
+```
 ## 1 Linux概述
 
 OS
+
 -CentOS使用最多
 
 Linux發行版
+
 -CentOS, RedHat, Debian企業服務器中用得最多
+
 -Ubuntu: PC端中用最多
 
+
+
 Linux
+
 -開源免費
+
 -內核
+
 -企業級服務器，嵌入式開發平台
 
+
+
 甚麼人要學Linux
+
 -Linux管理人員
+
 -數據庫管理員
+
 -網絡工程師
+
+
 
 ## 2 安裝VMare
 
 CentOS用最多
+
 利用VMware
+
+
 
 ## 5 Static IP config
 
 Vi命令
-打開文件 vi <filename>
+
+打開文件 vi &lt;filename>
+
 進入編輯模式 按i
+
 退出編輯模式 按Esc (返回命令模式)
 :q! 不儲存退出
 :wq 儲存並退出
 
 swap文件
 如果沒有使用命令退出，會出現.swp文件
-可使用rm <file>.swp 移除，然後y 確認
+可使用rm &lt;file>.swp 移除，然後y 確認
 
-cat <filename> 輸出文件內容
+cat &lt;filename> 輸出文件內容
 
 yum源
 軟件倉庫地址
@@ -104,7 +127,7 @@ d 目錄
 lrwxrwxrwx bin
 l 捷徑文件
 
-drwxr-xr-x <username> <group name>
+drwxr-xr-x &lt;username> &lt;group name>
 三組rwx
 第一組：建立文件者
 第二組：用戶所在群組（默認情況下組名=用戶名）
