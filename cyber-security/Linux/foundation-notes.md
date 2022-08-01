@@ -5,43 +5,35 @@
 
 OS
 
--CentOS使用最多
+- CentOS使用最多
 
 Linux發行版
 
--CentOS, RedHat, Debian企業服務器中用得最多
+- CentOS, RedHat, Debian企業服務器中用得最多
 
--Ubuntu: PC端中用最多
-
-
+- Ubuntu: PC端中用最多
 
 Linux
 
--開源免費
+- 開源免費
 
--內核
+- 內核
 
--企業級服務器，嵌入式開發平台
-
-
+- 企業級服務器，嵌入式開發平台
 
 甚麼人要學Linux
 
--Linux管理人員
+- Linux管理人員
 
--數據庫管理員
+- 數據庫管理員
 
--網絡工程師
-
-
+- 網絡工程師
 
 ## 2 安裝VMare
 
 CentOS用最多
 
 利用VMware
-
-
 
 ## 5 Static IP config
 
@@ -197,7 +189,7 @@ mv * ../ 移動當前pwd所有文件到父目錄
 
 ## 10 基本命令3
 
-cp <src> <dst>
+cp &lt;src> &lt;dst>
 複製文件
 
 cp hello.txt ../mashibin/hello3.txt
@@ -224,13 +216,13 @@ ps aux 查看Linux運行進程 (等於windows的工作管理員)
 
 ## 11 基本命令4
 
-head -n 20 <filename>
+head -n 20 &lt;filename>
 顯示文件頭20行內容
 
-tail -n 20 <filename>
+tail -n 20 &lt;filename>
 顯示文件尾20行內容
 
-tail -f <filename> ‼️
+tail -f &lt;filename> ‼️
 即時打印出文件新加入的內容
 ❕Ctrl+c 中斷命令
 
@@ -308,12 +300,12 @@ r:4 w:2 x:1 -:0(rwx全刪)
 改文件權限為u:read+write, g:read, o:read+write
 
 chown
-chown <user>:<group> hello.txt
-chown :<group> hello.txt 只改屬組
+chown &lt;user>:&lt;group> hello.txt
+chown :&lt;group> hello.txt 只改屬組
 ❕修改文件用戶屬組、用戶屬主
 -R 套用到所有子文件
 
-drwxr-xr-x <username> <group name>
+drwxr-xr-x &lt;username> &lt;group name>
 三組rwx
 第一組：文件屬主
 第二組：用戶所在群組（默認情況下組名=用戶名）
@@ -341,7 +333,7 @@ tar -cvf log.tar ./*
 對當前目錄下所有文件進行打包
 打包成log.tar文件 並顯示被打包文件
 
-❗️—exclude <filename> 除了某文件不打包
+❗️—exclude &lt;filename> 除了某文件不打包
 ❗️不能exclude目錄
 
 date 顯示當前time stamp
@@ -350,7 +342,7 @@ date 顯示當前time stamp
 cal 顯示日曆
 
 grep 顯示查找內容匹配項
-grep ‘<keyword>’ <filename>
+grep ‘&lt;keyword>’ &lt;filename>
 grep -n ‘for’ profile
 在profile文件顯示有for的行以及行數
 
@@ -379,7 +371,7 @@ ps -aux 常用
 
 kill 終止進程
 tail -f profile 是一個進程
-kill -9 <thread id>
+kill -9 &lt;thread id>
 
 編輯內容 vi vim
 yum instal vim 下載vim
