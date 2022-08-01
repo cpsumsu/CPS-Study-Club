@@ -247,7 +247,7 @@ Find pathname
 -print 打印匹配之文件
 -exec 匹配文件之上再執行shell語句
 
-```find ./x -name “\*.txt” -exec cp {} /opt/ \;```
+`find ./x -name “\*.txt” -exec cp {} /opt/ \;`
 
 find 找
 ./x 當前目下的x folder
