@@ -92,7 +92,7 @@ su 轉換用戶
 自己用戶的檔案會放到/home/裡面
 root用戶的「家」目錄在/root
 
-[kelvin@localhost ~]\$ cd~
+[kelvin@localhost \~]\$ cd\~
 用戶名@主機名 ~表示在家目錄 即/home/kelvin
 
 絕對路徑 /斜槓開頭
