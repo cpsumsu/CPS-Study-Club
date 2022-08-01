@@ -233,7 +233,7 @@ ls 在 usr/bin/ls
 
 whereis 打印可執行文件 幫助手冊 源碼文件位置
 
-echo \$PATH 打印環境變量 (\$ 即變量)
+echo \$PATH 打印環境變量  (\$PATH 即變量)
 
 yum install mloacte 下載locate
 
