@@ -1,5 +1,5 @@
 # Linux
-##1 Linux概述
+## 1 Linux概述
 
 OS
 -CentOS使用最多
@@ -18,12 +18,12 @@ Linux
 -數據庫管理員
 -網絡工程師
 
-##2 安裝VMare
+## 2 安裝VMare
 
 CentOS用最多
 利用VMware
 
-##5 Static IP config
+## 5 Static IP config
 
 Vi命令
 打開文件 vi <filename>
@@ -51,7 +51,7 @@ NETMASK=“255.255.255.0”
 DNS1=“202.175.36.16”
 GATEWAY=“192.168.68.2”
 
-##6 文件結構
+## 6 文件結構
 
 所有檔案存放於/目錄下
 
@@ -86,7 +86,7 @@ root用戶的「家」目錄在/root
 當前目錄 .
 父目標 ..
 
-##7 基本概念
+## 7 基本概念
 
 用戶等級：
 
@@ -115,7 +115,7 @@ drwxr-xr-x <username> <group name>
 etc/passwd 列出所有用戶 (UID:0, GID:0, root的user ID跟group ID是0)
 etc/group 列出所有的組
 
-##8 基本命令
+## 8 基本命令
 
 ls —help 列出ls命令選項
 
@@ -137,7 +137,7 @@ cd ../.. 切換至父目錄的父目錄
 pwd
 顯示當前路徑
 
-##9 基本命令2
+## 9 基本命令2
 
 mkdir
 創建目錄
@@ -172,7 +172,7 @@ mv [options] source directory
 
 mv * ../ 移動當前pwd所有文件到父目錄
 
-##10 基本命令3
+## 10 基本命令3
 
 cp <src> <dst>
 複製文件
@@ -199,7 +199,7 @@ less 隨意瀏覽文件
 history 查看命令輸入記錄
 ps aux 查看Linux運行進程 (等於windows的工作管理員)
 
-##11 基本命令4
+## 11 基本命令4
 
 head -n 20 <filename>
 顯示文件頭20行內容
@@ -227,7 +227,7 @@ locate 以關鍵字搜索 顯示所有符合文件/目錄
 快的原因是因為會訪問locate數據庫(索引)
 ❕updatedb 更新locate數據庫
 
-##12 基本命令5
+## 12 基本命令5
 
 Find 實時查找整個硬盤，並非使用索引
 Find pathname
@@ -300,7 +300,7 @@ chown laoxiao:laoxiao hello.txt
 修改文件屬主和屬組為 <用戶>：<用戶組>
 laoxiao對hello.txt的權限由o成為u
 
-##13 基本命令6
+## 13 基本命令6
 
 tar
 將多個文件打包，並不是壓縮文件
@@ -337,7 +337,7 @@ grep -n ‘for’ profile
 ps -ef | grep svn
 找查進程中有svn的一行
 
-##14 vi命令1
+## 14 vi命令1
 
 ps 顯示進程
 
@@ -374,7 +374,7 @@ vi hello.txt 進入vi編輯器命令模式
 按ESC返回命令模式
 按shift+; 進入末行模式
 
-##15 vi命令2
+## 15 vi命令2
 
 vi命令模式
 ❗️case sensitive
@@ -440,7 +440,7 @@ R 取代模式(replace mode)
 ZZ 保存及退出
 ZQ 不保存退出
 
-##16 vi命令3
+## 16 vi命令3
 
 末行模式
 vi profile
@@ -493,7 +493,7 @@ Ctrl+v （進入塊選擇模式）
 輸入#（python中的注釋）
 按兩下ESC （退出兩個模式）
 
-##17,18 Snapshot & Clone
+## 17,18 Snapshot & Clone
 
 快照在關機狀態下進行會較好
 init 0, 或shutdown 關機
@@ -523,7 +523,7 @@ vi /etc/sysconfig/network-scripts/ifcfg-ens33
 
 ip addr顯示ip配置
 
-##19 配置Yum源
+## 19 配置Yum源
 
 RPM軟件包安裝
 (RedHat Package Manager)
@@ -578,7 +578,7 @@ curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos
 3. 產生緩存
 yum makecache
 
-##20 Yum使用
+## 20 Yum使用
 
 檢查是否安裝了python
 yum search python
