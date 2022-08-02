@@ -20,7 +20,11 @@ To have a basic understanding of the following:
 
 ## Next Step
 
+Learn the modules in HTB
+
 Play with Kali Linux
+
+Play CTF
 
 ## Where to learn
 
@@ -32,6 +36,10 @@ Play with Kali Linux
 
 ## Useful links
 
+Cyber-security certifications: https://pauljerimy.com/security-certification-roadmap/
+
 Explain Linux Command: https://explainshell.com/
+
+This helps you focus: https://pomofocus.io/
 
 > Don't give up learning --Me
