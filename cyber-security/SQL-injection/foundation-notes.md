@@ -299,6 +299,7 @@ cmd mysql> show global variables like ‘%secure%’
 設定前
 
 ![](../assets/img/sql-injection/20220804-161808-18.jpg)
+
 設定後
 
 ![](../assets/img/sql-injection/20220804-161808-19.jpg)
