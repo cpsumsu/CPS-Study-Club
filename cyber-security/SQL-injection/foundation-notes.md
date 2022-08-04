@@ -112,12 +112,12 @@ select column_name from COLUMNS;
  	5.	其他
 
 前端頁面提交方式：
-	1.	GET
-	2.	POST
-	3.	COOKIE
-	4.	REQUEST
-	5.	HTTP header
-	6.	其他
+ 	1.	GET
+ 	2.	POST
+ 	3.	COOKIE
+ 	4.	REQUEST
+ 	5.	HTTP header
+ 	6.	其他
 
 數據類型：
 	1. 數字型
