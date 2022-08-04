@@ -7,13 +7,10 @@
 
 服務器裡面
 
-​	多個數據庫
-
-​		多個數據表
-
-​			多個行和列
-
-​				*數據*
+- 多個數據庫
+  - 多個數據表
+    - 多個行和列
+      - ***數據***
 
 一層一層拿到最底層的數據
 
@@ -105,31 +102,35 @@ select column_name from COLUMNS;
 ## SQL注入
 
 數據庫類型：
- 	1.	MySQL
- 	1.	MSSQL
- 	1.	Oracle
- 	1.	Access
- 	1.	其他
+
+   	1.	MySQL
+   	2.	MSSQL
+   	3.	Oracle
+   	4.	Access
+   	5.	其他
 
 前端頁面提交方式：
- 	1.	GET
- 	1.	POST
- 	1.	COOKIE
- 	1.	REQUEST
- 	1.	HTTP header
- 	1.	其他
+
+   	1.	GET
+   	2.	POST
+   	3.	COOKIE
+   	4.	REQUEST
+   	5.	HTTP header
+   	6.	其他
 
 數據類型：
- 	1. 數字型
- 	2. 字符型
- 	3. 其他
+
+   	1. 數字型
+   	2. 字符型
+   	3. 其他
 
 查詢方法：
- 	1.	select
- 	2.	insert
- 	3.	delete
- 	4.	update
- 	5.	order by
+
+   	1.	select
+   	2.	insert
+   	3.	delete
+   	4.	update
+   	5.	order by
 
 ## 瀏覽器數據提交
 Get: 利用url, 速度快, 不敏感的數據
