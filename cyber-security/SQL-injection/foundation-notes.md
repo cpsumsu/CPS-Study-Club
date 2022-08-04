@@ -112,7 +112,6 @@ select column_name from COLUMNS;
  	5.	其他
 
 前端頁面提交方式：
-
 	1.	GET
 	2.	POST
 	3.	COOKIE
@@ -121,13 +120,11 @@ select column_name from COLUMNS;
 	6.	其他
 
 數據類型：
-
 	1. 數字型
 	2. 字符型
 	3. 其他
 
 查詢方法：
-
 	1.	select
 	2.	insert
 	3.	delete
