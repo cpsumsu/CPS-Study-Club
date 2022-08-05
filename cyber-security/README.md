@@ -4,19 +4,12 @@
 
 To have a basic understanding of the following:
 
-1. Learn Networking (CCNA)
-
-2. Learn Linux (concept, command, build your own vm)
-
-3. Learn Windows in a security perspective
-
-4. Learn HTML, CSS, JavaScript
-
-5. Learn PHP
-
-6. Learn MySQL
-
-7. Learn python
+1. Networking (CCNA R&S)
+2. Linux (concept, command, build your own vm)
+3. Windows in a security perspective
+4. Web programming language (HTML, CSS, JavaScript, PHP)
+5. SQL
+7. Python
 
 ## Next Step
 
@@ -37,8 +30,6 @@ Play CTF
 ## Useful links
 
 Cyber-security certifications: https://pauljerimy.com/security-certification-roadmap/
-
-Explain Linux Command: https://explainshell.com/
 
 This helps you focus: https://pomofocus.io/
 
