@@ -30,7 +30,7 @@ Always ask google: https://www.google.com/
 
 2. ftp service is running, execute `ftp`
 
-   `ftp 10.129.190.178`
+   `ftp TARGET_IP`
 
 3. login with name `anonymous` without password
 
@@ -64,7 +64,7 @@ Always ask google: https://www.google.com/
 
 # Redeemer
 
-1. Check the tcp port openned on the machine, `-T5` used for quicker enum, `-sS` is checking the TCP SYN scan (half of the TCP handshake), `-sV` is used to check the version of the service
+1. Check the TCP port opened on the machine, `-T5` used for quicker enum, `-sS` is check for the TCP SYN scan (half of the TCP handshake), `-sV` is used to check the version of the service
 
    `nmap -p 1000-9999 -sSV -T5 TARGET_IP`
 
@@ -72,11 +72,11 @@ Always ask google: https://www.google.com/
 
 3. connect to Redis server, `-h` means host
 
-4. `redis-cli -h TARGET_IP`
+   `redis-cli -h TARGET_IP`
 
 5. Connected success, select the first database in Redis: `select 0`
 
 6. List all the keys in this database: `keys *`, the flag is in the *flag* key
 
-7. Look at the value of the key *flag* by`get flag`
+7. Look at the value of the key *flag* by `get flag`
 
