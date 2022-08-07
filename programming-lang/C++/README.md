@@ -14,8 +14,8 @@ Python, C, Java, JavaScript都是在[TIOBE](https://www.tiobe.com/tiobe-index/)�
 * 嵌入式軟件(智能硬件軟件或系統、iot物聯網裝置)
 
 ## 基礎C++的學習路徑
-0. [簡單對C++有基礎的了解](./docs/01-introduction.md)
-1. yaeh
+0. [簡單對C++有基礎的了解](./docs/00-introduction.md)
+1. [編譯與報錯](./docs/01-compile-errors.md)
 2. 變量與常量
 3. 數組與向量
 4. 表達式與運算符
