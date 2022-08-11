@@ -49,3 +49,7 @@ int CALLBACK WinMain(
 	return 0;
 }
 ```
+
+# 備忘
+https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-winmain
+https://blog.csdn.net/yaked/article/details/52354921
