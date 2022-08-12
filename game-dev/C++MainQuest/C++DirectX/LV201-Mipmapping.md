@@ -58,8 +58,11 @@ Texture::Texture( Graphics& gfx,const std::string& path,UINT slot )
 
 更改 textureDesc 參數:
 > textureDesc.MipLevels = 0;
+
 > textureDesc.BindFlags = D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_RENDER_TARGET;
+
 > textureDesc.MiscFlags = D3D11_RESOURCE_MISC_GENERATE_MIPS;
+
 > srvDesc.Texture2D.MipLevels = -1;
 
 最後使用 gpu 渲染管道生成 mip 鏈:
@@ -83,7 +86,9 @@ HRESULT CreateTexture2D(
 ```
 
 檢查 D3D11_SUBRESOURCE_DATA *pInitialData 在Docs的說明如下:
-> A pointer to an array of D3D11_SUBRESOURCE_DATA structures that describe subresources for the 2D texture resource. Applications can't specify NULL for pInitialData when creating IMMUTABLE resources (see D3D11_USAGE)
+> A pointer to an array of D3D11_SUBRESOURCE_DATA structures that describe subresources for the 2D texture resource. 
+
+> Applications can't specify NULL for pInitialData when creating IMMUTABLE resources (see D3D11_USAGE)
 
 問題解答已經很明顯了，刪去D3D11_SUBRESOURCE_DATA sd以及其資料，先傳入nullptr，再使用UpdateSubresource函數替代掉此操作
 
