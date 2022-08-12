@@ -30,7 +30,7 @@ Sampler::Sampler( Graphics& gfx )
 改良:
 > samplerDesc.Filter = D3D11_FILTER_ANISOTROPIC;
 
-![Anisotropic filtering](https://wikimedia.org/api/rest_v1/media/math/render/svg/cefc19220ffab8525959461b437c6d4050449b94)
+![Anisotropic filtering](https://upload.wikimedia.org/wikipedia/zh/3/30/%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E8%BF%87%E6%BB%A4.jpg)
 
 各向異性過濾，主要是對于三維空間的立體貼圖有效果，防止貼圖畸變，效果很不錯，與雙線性過濾和三線性過濾相比，它在大角度顯示方面具有更高的精度，令畫面更逼真，但計算量也更大，對顯示卡的要求也更高。
 
@@ -59,4 +59,5 @@ Sampler::Sampler( Graphics& gfx )
 # 備忘錄
 
 各向異性過濾wiki
+
 https://zh.wikipedia.org/zh-tw/%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E8%BF%87%E6%BB%A4
