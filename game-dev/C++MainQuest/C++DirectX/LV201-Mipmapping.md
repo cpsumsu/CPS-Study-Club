@@ -10,6 +10,8 @@ Mipmapping技術在1983年由Lance Williams 發明，在他的論文 Pyramidal p
 
 如果沒有三線性過濾，那32x32 會被放大顯示，或者有三線性過濾，會在64x64和32x32之間切換
 
+![Mipmappping](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/MipMap_Example_STS101.jpg/330px-MipMap_Example_STS101.jpg)
+
 簡單應用
 ```c++
 Texture::Texture( Graphics& gfx,const std::string& path,UINT slot )
@@ -114,10 +116,13 @@ UINT Texture::CalculateNumberOfMipLevels( UINT width,UINT height ) noexcept
 # 備忘錄
 
 論文 Pyramidal parametrics by Lance Williams
+
 https://web.archive.org/web/20140414134825/http://staff.cs.psu.ac.th/iew/cs344-481/p1-williams.pdf
 
 ID3D11Device::CreateTexture2D 參數詳解
+
 https://docs.microsoft.com/en-us/windows/win32/api/d3d11/nf-d3d11-id3d11device-createtexture2d
 
 ID3D11DeviceContext::UpdateSubresource 參數詳解
+
 https://docs.microsoft.com/en-us/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-updatesubresource
