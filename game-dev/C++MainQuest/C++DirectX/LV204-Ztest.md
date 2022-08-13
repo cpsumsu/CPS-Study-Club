@@ -8,3 +8,14 @@
 ```c++
 bindablePtrs.push_back( Blender::Resolve( gfx,hasAlphaDiffuse ) );
 ```
+
+新增 alpha test
+```hlsl  
+    float4 dtex = tex.Sample(splr, tc);
+    clip(dtex.a < 0.1f ? -1 : 1);
+```
+
+# 備忘
+
+clip
+https://docs.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl-clip
