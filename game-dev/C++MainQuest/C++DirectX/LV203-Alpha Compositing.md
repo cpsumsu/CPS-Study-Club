@@ -144,6 +144,14 @@ std::shared_ptr<Blender> Blender::Resolve( Graphics& gfx,bool blending )
 	}
 ```
 
+可以使用OMSetBlendState後續更改
+```c++
+void Blender::Bind(Graphics& gfx) noexcept
+	{
+		GetContext(gfx)->OMSetBlendState(pBlender.Get(), nullptr, 0xFFFFFFFFu);
+	}
+```
+
 # 步驟
 
 1. Texture image with alpha channel
