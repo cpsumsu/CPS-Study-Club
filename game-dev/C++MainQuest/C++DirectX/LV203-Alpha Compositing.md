@@ -92,9 +92,11 @@ auto tex = Texture::Resolve( gfx,rootPath + texFileName.C_Str() );
 
 記得所有材質皆需要統一blending mode
 ```c++
+// add it at the end
 bindablePtrs.push_back( Blender::Resolve( gfx,hasAlphaDiffuse ) );
 ```
 
+D3D11_BLEND_DESC blendDesc members setting
 ```c++
 Blender::Blender( Graphics& gfx,bool blending )
 		:
@@ -109,6 +111,8 @@ Blender::Blender( Graphics& gfx,bool blending )
 			brt.BlendEnable = TRUE;
 			brt.SrcBlend = D3D11_BLEND_SRC_ALPHA;
 			brt.DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+            
+            // Operator ADD
 			brt.BlendOp = D3D11_BLEND_OP_ADD;
 			brt.SrcBlendAlpha = D3D11_BLEND_ZERO;
 			brt.DestBlendAlpha = D3D11_BLEND_ZERO;
@@ -123,6 +127,15 @@ Blender::Blender( Graphics& gfx,bool blending )
 		GFX_THROW_INFO( GetDevice( gfx )->CreateBlendState( &blendDesc,&pBlender ) );
 	}
 ```
+
+brt.BlendOp 詳細參數
+> D3D11_BLEND_OP_ADD 把兩個顏色加起來
+> D3D11_BLEND_OP_SUBTRACT source1減去source2。
+> D3D11_BLEND_OP_REV_SUBTRACT source2減去source1
+> D3D11_BLEND_OP_MIN image 取最小顏色值。
+> D3D11_BLEND_OP_MAX image 取最大顏色值。
+
+over 運算符的詳細解析推導可以看看wiki
 
 ```c++
 std::shared_ptr<Blender> Blender::Resolve( Graphics& gfx,bool blending )
