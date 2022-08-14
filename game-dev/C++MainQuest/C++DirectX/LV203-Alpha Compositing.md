@@ -152,6 +152,9 @@ void Blender::Bind(Graphics& gfx) noexcept
 	}
 ```
 
+簡單應用
+![](https://cdn.discordapp.com/attachments/894788659356794880/1008204508440051803/unknown.png)
+
 # 步驟
 
 1. Texture image with alpha channel
