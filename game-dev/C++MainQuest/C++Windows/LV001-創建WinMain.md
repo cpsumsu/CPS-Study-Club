@@ -32,7 +32,7 @@ window程序中包含了:
 1. window: class, instance
 2. message: ?
 
-以下是示例代碼，快來ctrl c ctrl v 這段代碼吧!
+以下是示例代碼，快來 ctrl c ctrl v 這段代碼吧!
 ```c++
 #include <Windows.h>
 

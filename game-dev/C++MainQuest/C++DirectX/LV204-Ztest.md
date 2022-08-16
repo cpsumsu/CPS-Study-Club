@@ -19,6 +19,8 @@ bindablePtrs.push_back( Blender::Resolve( gfx,hasAlphaDiffuse ) );
 
 知道為什麼這裡的 dtex.a 要小於 0.1f 嗎?
 
+# 解答
+
 
 
 # 備忘
