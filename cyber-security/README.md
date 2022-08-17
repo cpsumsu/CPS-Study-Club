@@ -13,11 +13,9 @@ To have a basic understanding of the following:
 
 ## Next Step
 
-Learn the modules in HTB
+Learn the modules in HTB Academy
 
-Play with Kali Linux
-
-Play CTF
+Play HTB
 
 ## Where to learn
 
@@ -28,6 +26,8 @@ Play CTF
 [Cisco Academy](https://www.netacad.com/zh-hant)
 
 ## Useful links
+
+[資安這條路─系統化學習滲透測試](https://ithelp.ithome.com.tw/users/20108446/ironman/4492?page=1)
 
 Cyber-security certifications: https://pauljerimy.com/security-certification-roadmap/
 
