@@ -14,11 +14,11 @@ start here: https://www.bilibili.com/video/BV1Zy4y1K7SH
 
 3. 使用**虛擬DOM**+優秀的**Diff算法**，盡量複用DOM節點
 
-   ![image-20220812025224696](..\assets-img\002.png)
+   ![image-20220812025224696](../assets-img/002.png)
 
 ## 003 Vue官網使用指南
 
-![image-20220812025641756](..\assets-img\003.png)
+![image-20220812025641756](../assets-img/003.png)
 
 Vue官網 https://cn.vuejs.org
 
