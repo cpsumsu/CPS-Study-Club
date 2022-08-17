@@ -52,7 +52,7 @@ Google chrome extension: **vue-devtools**
 - 插值內可為js表達式(表達式會產生一個值)，如 `date.now()`會顯示當前日期，`x===y ? 'a':'b' `會產生a或b，但不能是語句如if, for
 - 一個Vue對應一個DOM，一對一關係
 ### 總結
-![image-20220812032421446](..\assets-img\006.png)
+![image-20220812032421446](../assets-img/006.png)
 
 ## 007 模板語法 008 數據綁定
 
@@ -76,11 +76,11 @@ Google chrome extension: **vue-devtools**
 
 - 取代el: `v.$mount(#root)`，好處是可以使用function執行mount的**條件**，如`setTimeout(()=>{v.$mount('#root')},1000);`
 
-![image-20220811213318801](..\assets-img\009.png)
+![image-20220811213318801](../assets-img/009.png)
 
 - 將data寫成一個必須**return**值的function (component必用寫法)
 
-![image-20220811213921145](..\assets-img\009-2.png)
+![image-20220811213921145](../assets-img/009-2.png)
 
 - 由vue管理的functions不能寫anonymous function`()=>{}`，否則**this**會從vue實例變成window
 
@@ -88,9 +88,9 @@ Google chrome extension: **vue-devtools**
 
 ### 總結
 
-![image-20220811215510153](..\assets-img\010.png)
+![image-20220811215510153](../assets-img/010.png)
 
-![image-20220813170920284](..\assets-img\010-2.png)
+![image-20220813170920284](../assets-img/010-2.png)
 
 # 011 回顧Object.defineProperty方法
 
@@ -114,7 +114,7 @@ enumerable:true的意思是可以**被枚舉**(v-for時會被enum出來，默認
 
 writable:true的意思是可以**被修改**(默認不能)
 
-![image-20220812012534212](..\assets-img\011.png)
+![image-20220812012534212](../assets-img/011.png)
 
 
 
@@ -170,11 +170,11 @@ configurable:false的意思是可以**不能被刪除**(默認可以)
 
 在console中可見到obj2的x值和get x和set x
 
-![image-20220813173452572](..\assets-img\012.png)
+![image-20220813173452572](../assets-img/012.png)
 
 ## 013 Vue中的數據代理
 
-   ![image-20220813174942740](..\assets-img\013.png)
+   ![image-20220813174942740](../assets-img/013.png)
 
 **數據代理**目的是不用打`{{_data.name}}`而是`{{name}}`就可以
 
@@ -220,7 +220,7 @@ methods:{
 
 ### 總結
 
-![image-20220813192723807](..\assets-img\014.png)
+![image-20220813192723807](../assets-img/014.png)
 
 ## 015 事件修飾符
 
@@ -277,7 +277,7 @@ computed:{
 
 ### 總結
 
-![image-20220813232508048](..\assets-img\019.png)
+![image-20220813232508048](../assets-img/019.png)
 
 #### 簡寫
 
@@ -351,7 +351,7 @@ watch的原理是可執可函數，可以寫**異步函數**
 
 ### 重要總結
 
-![image-20220814160607682](..\assets-img\025.png)
+![image-20220814160607682](../assets-img/025.png)
 
 普通函數：xxx(){}	箭頭函數：()=>{}	**釐清兩者的原因是要將成功this指向vm**
 
@@ -478,19 +478,19 @@ data:{
 
 ## 030 Key作用與原理
 
-![image-20220814221703621](..\assets-img\030.png)
+![image-20220814221703621](../assets-img/030.png)
 
-![image-20220814221904121](..\assets-img\030-2.png)
+![image-20220814221904121](../assets-img/030-2.png)
 
-![image-20220814222100129](..\assets-img\030-3.png)
+![image-20220814222100129](../assets-img/030-3.png)
 
 ## 031 列表過濾
 
 ***案例：模糊搜索***
 
-![image-20220814223644786](..\assets-img\031.png)
+![image-20220814223644786](../assets-img/031.png)
 
-![image-20220814223717929](..\assets-img\031-2.png)
+![image-20220814223717929](../assets-img/031-2.png)
 
 `immdeate:true`作用為先執行一次**空字符串**的檢索，因filPersons[]為空，需要執行一次indexOf('')將所有匹配項放進filePersons[]，而**所有persons.name都擁有空字符串**
 
@@ -514,19 +514,19 @@ computed:{
 
 ***案例：模糊搜索+排序***
 
-![image-20220815011336563](..\assets-img\032.png)
+![image-20220815011336563](../assets-img/032.png)
 
 ## 033 034 Vue監視data值改變原理
 
 Vue監視data值改變**失敗**案例: `this.persons[0] = {id:'001', name:'Mr. Ma', age:'50', sex:'M'}`
 
-![image-20220815012553128](..\assets-img\033.png)
+![image-20220815012553128](../assets-img/033.png)
 
 雖然值已經改變，但這種寫法Vue不會將新的數據渲染，反而上面的寫法**奏效**
 
 ### 原理：查看_data
 
-![image-20220815232711602](..\assets-img\034.png)
+![image-20220815232711602](../assets-img/034.png)
 
 Vue會加工data裡的address和name配置一個`reactiveSetter`跟`reactiveGetter`，主要原理是利用**Observer()**
 
@@ -546,7 +546,7 @@ Vue._data.student === Vue.student **True**
 
 ## 036 Vue監視數組改變原理
 
-![image-20220816145432143](..\assets-img\036.png)
+![image-20220816145432143](../assets-img/036.png)
 
 vue 無法偵測到到這種寫法的改變，因沒有為index服務的setter, getter
 
@@ -554,37 +554,37 @@ Vue是**可以偵測到影響數組改變的function**的:
 
 ​	`push, pop, shift, unshift, splice, sort, reverse`(filter不能因為沒有影響原數組)
 
-![image-20220816150946915](..\assets-img\036-2.png)
+![image-20220816150946915](../assets-img/036-2.png)
 
 Vue寫的push並非原來的push (Array.prototype.push)，Vue包裝了原有的push function再額外加了Vue自己的東西: **重新渲染模板**
 
 ## 037 總結Vue監視data改變
 
-![image-20220816151959152](..\assets-img\037.png)
+![image-20220816151959152](../assets-img/037.png)
 
-![image-20220816152111250](..\assets-img\037-2.png)
+![image-20220816152111250](../assets-img/037-2.png)
 
 Vue.set也可以寫成`this.$set()`
 
 加朋友及改朋友名字:
 
-![image-20220816152754430](..\assets-img\037-4.png)
+![image-20220816152754430](../assets-img/037-4.png)
 
 **可以修改friends[0].name，因為有getter, setter**
 
-![image-20220816152556990](..\assets-img\037-3.png)
+![image-20220816152556990](../assets-img/037-3.png)
 
 加愛好及改愛好
 
-![image-20220816153059272](..\assets-img\037-5.png)
+![image-20220816153059272](../assets-img/037-5.png)
 
 updateHobby()有以上兩種寫法
 
 ### 總結
 
-![image-20220816153234913](..\assets-img\037-6.png)
+![image-20220816153234913](../assets-img/037-6.png)
 
-![image-20220816153528938](..\assets-img\037-7.png)
+![image-20220816153528938](../assets-img/037-7.png)
 
 即 `this.arr = this.arr.filter((h)=>{return h!=='抽煙'}`
 
@@ -592,7 +592,7 @@ updateHobby()有以上兩種寫法
 
 **案例:**
 
-![image-20220816154329012](..\assets-img\038.png)
+![image-20220816154329012](../assets-img/038.png)
 
 ```html
 <form @submit.prevent:'submit'>
@@ -655,7 +655,7 @@ checkbox不配置value，vue會解釋為boolean, checked: true or false，可應
 
 **v-model修飾符** .number .trim .lazy
 
-![image-20220816165421180](..\assets-img\038-2.png)
+![image-20220816165421180](../assets-img/038-2.png)
 
 ## 039 過濾器
 
@@ -669,15 +669,15 @@ checkbox不配置value，vue會解釋為boolean, checked: true or false，可應
 
 ### 全局過濾器
 
-![image-20220816174142903](..\assets-img\039-2.png)
+![image-20220816174142903](../assets-img/039-2.png)
 
 ### 總結
 
-![image-20220816174424687](..\assets-img\039-3.png)
+![image-20220816174424687](../assets-img/039-3.png)
 
 ## 040 v-text 指令
 
-![image-20220816175057525](..\assets-img\040.png)
+![image-20220816175057525](../assets-img/040.png)
 
 ## 041 v-html 指令
 
@@ -687,11 +687,11 @@ checkbox不配置value，vue會解釋為boolean, checked: true or false，可應
 
 ### v-html問題 XSS攻擊
 
-![image-20220816183115386](..\assets-img\041.png)
+![image-20220816183115386](../assets-img/041.png)
 
 可以發送cookies到其他網
 
-![image-20220816183403042](..\assets-img\041-2.png)
+![image-20220816183403042](../assets-img/041-2.png)
 
 而加上HttpOnly的不會被document.cookie調出
 
@@ -704,15 +704,15 @@ JS阻塞兩情況:
 
 v-cloak可以解決這個問題
 
-![image-20220816210913539](..\assets-img\042.png)
+![image-20220816210913539](../assets-img/042.png)
 
 ## 043 v-once
 
-![image-20220816211129259](..\assets-img\043.png)
+![image-20220816211129259](../assets-img/043.png)
 
 ## 044 v-pre
 
-![image-20220816211331161](..\assets-img\044.png)
+![image-20220816211331161](../assets-img/044.png)
 
 ## 045 046 047 自定義指令
 
@@ -741,11 +741,11 @@ new Vue({
 
 首先先可以去看一下element跟binding是甚麼
 
-![image-20220816212142297](..\assets-img\045.png)
+![image-20220816212142297](../assets-img/045.png)
 
 element是真實DOM (可以以`console.dir(a)`或`console.log(a instanceof HTMLElement)`為True方法驗證), 而展開b可以看到
 
-![image-20220816212530007](..\assets-img\045-2.png)
+![image-20220816212530007](../assets-img/045-2.png)
 
 expression為`n`，value為n的值`1`
 
@@ -785,7 +785,7 @@ new Vue({
 
 ### 總結
 
-![image-20220816222447417](..\assets-img\047.png)
+![image-20220816222447417](../assets-img/047.png)
 
 ## 048 引出生命周期
 
