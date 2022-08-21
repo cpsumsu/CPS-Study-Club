@@ -6,7 +6,7 @@ GitHub: https://github.com/axios/axios
 
 ## 01 HTTP相關內容
 
-<img src="../assets-img/axios/1.png" alt="image-20220821165951961" style="zoom:67%;" align="left"/>
+<img src="../assets-img/axios/1.png" alt="image-20220821165951961" style="zoom:67%;clear:both" align="left"/>
 
 ### HTTP請求報文
 
@@ -14,7 +14,7 @@ GitHub: https://github.com/axios/axios
 
 ### HTTP響應報文
 
-<img src="../assets-img/axios/1-3.png" alt="image-20220821174553128" style="zoom:60%;" align="left"/>
+<img src="../assets-img/axios/1-3.png" alt="image-20220821174553128" style="zoom:60%;clear:both" align="left"/>
 
 <img src="../assets-img/axios/1-4.png" alt="image-20220821174909861" style="zoom:60%;" align="left" />
 
