@@ -16,7 +16,7 @@ GitHub: https://github.com/axios/axios
 
 <img src="../assets-img/axios/1-3.png" alt="image-20220821174553128" style="zoom:60%;clear:both" align="left"/>
 
-<img src="../assets-img/axios/1-4.png" alt="image-20220821174909861" style="zoom:60%;" align="left" />
+<img src="../assets-img/axios/1-4.png" alt="image-20220821174909861" style="zoom:60%;clear:both" align="left" />
 
 
 
