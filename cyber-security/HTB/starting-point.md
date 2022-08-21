@@ -124,7 +124,7 @@ Always ask google: https://www.google.com/
 
    `gobuster dir -u TARGET_IP -x php -w /user/share/wordlists/dirb/common.txt`
 
-   ![image-20220807140329252](..\assets\img\htb-starting-point\1.png)
+   ![image-20220807140329252](../assets/img/htb-starting-point/1.png)
 
 4. Check the TARGET_IP/login.php in browser
 
@@ -139,6 +139,6 @@ Always ask google: https://www.google.com/
 # 1.4 Responder
 
 1. Check all ports:`nmap -p- -T5 -sS TARGET_IP`
-2. ![image-20220807172900458](..\assets\img\htb-starting-point\2.png)
+2. ![image-20220807172900458](../assets/img/htb-starting-point/2.png)
 3. Check directories: `gobuster dir -u TARGET_IP -w /user/share/wordlists/dirb/common.txt`
-4. ![image-20220807173447614](..\assets\img\htb-starting-point\3.png)
+4. ![image-20220807173447614](../assets/img/htb-starting-point/3.png)

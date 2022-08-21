@@ -4,6 +4,10 @@ prerequisite: html,css,js
 
 start here: https://www.bilibili.com/video/BV1Zy4y1K7SH
 
+why vue? traditional:
+
+<img src="../assets-img/why-vue.png" alt="image-20220820013624226" style="zoom:33%;" />
+
 ## 002 Vue簡介
 
 一套用於構建用戶界面的*漸進式*JavaScript框架(可以不停加庫)
@@ -202,7 +206,7 @@ const vm = new Vue({
 })
 ```
 
-### event.target 會顯示被按按鈕的內容
+### event.target 會顯示被按按鈕的html
 
 ```javascript
 methods:{
@@ -347,7 +351,7 @@ watch:{
 
 computed的原理是return值
 
-watch的原理是可執可函數，可以寫**異步函數**
+watch的原理是可執行函數，可以寫**異步函數**
 
 ### 重要總結
 
@@ -538,9 +542,9 @@ Vue會加工data裡的address和name配置一個`reactiveSetter`跟`reactiveGett
 
 Vue.set(`target`,`key`,`val`), Example: 
 
-	1. 可以在student加property`Vue.set(vm.student,'sex','男')` 
-	1. 可以在student改第1個property值`Vue.set(vm.student,0,'Amy')`
-	1. 不能直接在Vue增加`Vue.set(vm._data,'teacher','一個老師')`
+1. 可以在student加property`Vue.set(vm.student,'sex','男')` 
+2. 可以在student改第1個property值`Vue.set(vm.student,0,'Amy')`
+3. 不能直接在Vue增加`Vue.set(vm._data,'teacher','一個老師')`
 
 Vue._data.student === Vue.student **True**
 
@@ -578,7 +582,7 @@ Vue.set也可以寫成`this.$set()`
 
 ![image-20220816153059272](../assets-img/037-5.png)
 
-updateHobby()有以上兩種寫法
+updateHobby() 有兩種寫法
 
 ### 總結
 
@@ -653,7 +657,7 @@ checkbox不配置value，vue會解釋為boolean, checked: true or false，可應
 
 `@submit.prevent`
 
-**v-model修飾符** .number .trim .lazy
+**v-model修飾符** ***.number .trim .lazy***
 
 ![image-20220816165421180](../assets-img/038-2.png)
 
@@ -789,3 +793,222 @@ new Vue({
 
 ## 048 引出生命周期
 
+案例：頁面一開始便會出現一個循環變化opacity的h2
+
+```html
+<body>
+    <div>
+        <!--
+style="opacity=1"為html寫法，vue寫法會用v-bind(:即v-bind)內可寫js表達式，而style為需要一個key:value物件，即寫成{opacity:opacity}，因opacity同名所以在ES6可簡寫成{opacity}
+		-->
+		<h2 :style="{opacity}">我會不停變透明度</h2>
+	</div>
+</body>
+<script type="text/javascript">
+    const vm = new Vue({
+        el:'#root',
+        data:{
+            opacity:1
+        }
+    })
+    //不推薦定時器寫在vue實例外，要用vm.opacity以讀取opacity值，以及這並非全局之用
+    setInterval(() => {
+        //在vue的世界中減0.01未必真的減0.01
+        vm.opacity -= 0.01
+        if(vm.opacity <= 0) vm.opacity = 1
+    }, 16)
+</scripts>
+```
+
+### 在vue methods:{}內的寫法(不推薦)
+
+![image-20220819231331143](../assets-img/048.png)
+
+思考點：在哪裡調用`change()`? 使用methods會出現找不到調用的地方
+
+### 用mounted(){}
+
+Vue完成模板的解析並把*初始的*真實的DOM元素放入頁面後(即掛載完畢)調用**mounted**
+
+![image-20220819232446551](../assets-img/048-2.png)
+
+**此處的this是vue喔
+
+### 總結
+
+![image-20220819232841329](../assets-img/048-3.png)
+
+## 049 生命周期 掛載流程
+
+可利用`debugger;`製作斷點卡頓
+
+`Vue template option`: 容器內可為空，**綠色框內容會整個代替紅色框內容**，但template內**只能一個根元素**(用div包著)，ES6可用`` 包著換行字串
+
+![image-20220820001126082](../assets-img/049.png)
+
+### 掛載流程圖 - beforeCreate, created, beforeMount, mounted
+
+![image-20220820001826248](../assets-img/049-2.png)
+
+## 050 生命周期 更新流程
+
+### 更新流程圖 - beforeUpdate, updated
+
+![image-20220820002053668](../assets-img/050.png)
+
+## 051 生命周期 銷毀流程
+
+### vm.$destroy() [vm的自我終結，少用]
+
+vm的工作成果會**保留在頁面**，只是銷毀了vm實例，vue不再管理你的模板
+
+![image-20220820005308585](../assets-img/051-2.png)
+
+### 銷毀流程圖 - beforeDestroy, destroyed
+
+![image-20220820003414304](../assets-img/051.png)
+
+在beforeDestroy `this.n = 99` 或`add()`可用但不會再走**更新流程**
+
+## 052 生命周期 總結
+
+![image-20220820010422769](../assets-img/052.png)
+
+![image-20220820011734356](../assets-img/052-2.png)
+
+## 053 對組件的理解
+
+![image-20220820014112178](../assets-img/053.png)
+
+![image-20220820014526518](../assets-img/053-2.png)
+
+![image-20220820014649001](../assets-img/053-3.png)
+
+組件的定義：實現應用中**局部**功能**代碼**和**資源**的**集合**
+
+## 054 非單文件組件
+
+![image-20220820015417819](../assets-img/054.png)
+
+實際情況都會用**單文件組件**(以.vue結尾的)
+
+### 創建組件 Vue.extend
+
+幾乎與new Vue({}) 創建vue實例一樣功能，但不會亦不能以`el:#root`綁死一個模板，以保留其**複用靈活性**
+
+![image-20220820165856871](../assets-img/054-2.png)
+
+(在vue.extend裡寫，不要寫匿名函數)函數式寫data可以令x1,x2的a,b值分離，因data()各自為x1,x2創建了object
+
+### 1. 創建組件school和student
+
+![image-20220820171112607](../assets-img/054-4.png)
+
+### 2. 註冊組件
+
+![image-20220820170626726](../assets-img/054-3.png)
+
+### 3. 編寫組件標籤
+
+![image-20220820171429448](../assets-img/054-5.png)
+
+```
+//全局註冊組件
+Vue.component('hello',hello)
+```
+
+### 總結
+
+![image-20220820172104576](../assets-img/054-6.png)
+
+## 055 組件的注意點
+
+![image-20220820172708877](C:\Users\73681\AppData\Roaming\Typora\typora-user-images\image-20220820172708877.png)
+
+## 056 組件的嵌套
+
+<img src="../assets-img/056.png" alt="image-20220820174126876" style="zoom:50%;" />
+
+![image-20220820174905911](../assets-img/056-2.png)
+
+標準寫法：**利用一個大app 管理所有components**
+
+![image-20220820175934567](../assets-img/056-3.png)
+
+## 057 VueComponent構造函數
+
+組件的本質是個函數，vc是由VueComponent構造函數new出來的
+
+![image-20220820183112984](../assets-img/057.png)
+
+### vm管理著多個vc
+
+![image-20220820183341642](C:\Me\Github\CPS-Study-Club\web-dev\assets-img\057-2.png)
+
+## 058 059 Vue實例與VC實例的重要關係
+
+vm跟vc的options基本一致，但有兩個差別：
+
+- vc不能寫el
+
+- vc的data必須用函式寫法(**複用vc時才能構造出不同的data object**)
+
+### 鋪墊：函式原型對象
+
+![image-20220820191812166](../assets-img/059.png)
+
+構造函數擁有**顯式原型屬性prototype**，實例擁有**隱式原型屬性__proto\_\_**
+
+`d.__proto__`跟`Demo.prototype`指向同一物件
+
+***實例的原型對象指向創造它的構造函數***
+
+### Vue與VueComponent的關係
+
+![image-20220820195709020](../assets-img/059-2.png)
+
+### 總結
+
+![image-20220820195858135](../assets-img/059-3.png)
+
+## 60 單文件組件
+
+![image-20220820212000933](../assets-img/060.png)
+
+### vue單文件組件的結構
+
+`template`組件的結構
+
+`script`組件交互的代碼(數據﹑方法等) **要export出去**，最好寫name
+
+`style`組件的樣式
+
+<img src="../assets-img/060-2.png" alt="image-20220820214749426" style="zoom:67%;" />
+
+### App.Vue
+
+別忘了用一個App.Vue包住，用來管理其他component
+
+<img src="../assets-img/060-3.png" alt="image-20220820223856307" style="zoom:67%;" />
+
+### main.js
+
+建立main.js創建vue實例並引入App.Vue
+
+![image-20220820224208481](../assets-img/060-4.png)
+
+### index.html
+
+準備一個容器，script放在容器下面，先讓模板出來再讓vue渲染
+
+![image-20220820224529483](../assets-img/060-5.png)
+
+## 61 Vue CLI
+
+CLI(command line interface) 用來編譯vue文件
+
+![image-20220820225419277](../assets-img/061.png)
+
+### 這邊會選擇用vite
+
+https://www.youtube.com/watch?v=FkVJCy3dao4&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K
