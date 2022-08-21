@@ -8,15 +8,23 @@ GitHub: https://github.com/axios/axios
 
 <img src="../assets-img/axios/1.png" alt="image-20220821165951961" style="zoom:67%;" align="left"/>
 
+
+
 ### HTTP請求報文
 
 <img src="../assets-img/axios/1-2.png" alt="image-20220821174430511" style="zoom:60%;" align="left"/>
+
+
 
 ### HTTP響應報文
 
 <img src="../assets-img/axios/1-3.png" alt="image-20220821174553128" style="zoom:60%;" align="left"/>
 
+
+
 <img src="../assets-img/axios/1-4.png" alt="image-20220821174909861" style="zoom:60%;" align="left" />
+
+
 
 
 
@@ -24,11 +32,19 @@ GitHub: https://github.com/axios/axios
 
 <img src="..\assets-img\axios\2.png" alt="image-20220821175226462" style="zoom:67%;" align="left"/>
 
+
+
 <img src="..\assets-img\axios\2-2.png" alt="image-20220821175226462" style="zoom:67%;" align="left"/>
+
+
 
 <img src="..\assets-img\axios\2-3.png" alt="image-20220821175226462" style="zoom:67%;" align="left"/>
 
+
+
 <img src="..\assets-img\axios\2-4.png" alt="image-20220821175226462" style="zoom:67%;" align="left"/>
+
+
 
 ### 總結
 
@@ -40,9 +56,13 @@ GitHub: https://github.com/axios/axios
 
 
 
+
+
 ## 03 API的分類
 
 <img src="..\assets-img\axios\3.png" alt="image-20220821175226462" style="zoom:67%;" align="left"/>
+
+
 
 在server端(express.js)，**RESTful API可以在同一個路徑可以進行增刪改查**
 
@@ -77,11 +97,15 @@ json-server db.json
 
 <img src="..\assets-img\axios\5.png" alt="image-20220821175226462" style="zoom:50%;" align="left"/>
 
+
+
 ### POST
 
 請求參數：利用body的x-www-form-urlencoded (json-server不能用query params, id自動增加)
 
 <img src="..\assets-img\axios\5-2.png" alt="image-20220821175226462" style="zoom:50%;" align="left"/>
+
+
 
 ### PUT
 
@@ -89,15 +113,21 @@ json-server db.json
 
 <img src="..\assets-img\axios\5-3.png" alt="image-20220821175226462" style="zoom:50%;" align="left"/>
 
+
+
 ### DELETE
 
 請求參數：**id利用路徑params**(json-server規定)
 
 <img src="..\assets-img\axios\5-4.png" alt="image-20220821175226462" style="zoom:50%;" align="left"/>
 
+
+
 Postman會在header加已選擇的content-type
 
 <img src="..\assets-img\axios\5-6.png" alt="image-20220821175226462" style="zoom:80%;" align="left"/>
+
+
 
 選擇以json格式時，postman會在Content-Type自動設定 **application/json**
 
@@ -121,15 +151,23 @@ apidoc 建立api文檔 https://apidocjs.com/
 
 <img src="..\assets-img\axios\8.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
 
+
+
 可cdn引用，npm或本地
 
 ### 模板
 
 <img src="..\assets-img\axios\9-4.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
 
+
+
 <img src="..\assets-img\axios\9-5.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
 
+
+
 <img src="..\assets-img\axios\9-6.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+
+
 
 ### GET
 
@@ -148,6 +186,8 @@ btn.onclick=()=>{
 ### response實例
 
 <img src="..\assets-img\axios\8-1.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+
+
 
 - config裡的headers是請求頭
 
