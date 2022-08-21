@@ -6,40 +6,40 @@ GitHub: https://github.com/axios/axios
 
 ## 01 HTTP相關內容
 
-<img src="../assets-img/axios/1.png" alt="image-20220821165951961" style="zoom:67%" align="left"/>
+<img src="../assets-img/axios/1.png" alt="image-20220821165951961" style="zoom:67%" />
 
 
 
 ### HTTP請求報文
 
-<img src="../assets-img/axios/1-2.png" alt="image-20220821174430511" style="zoom:60%;" align="left"/>
+<img src="../assets-img/axios/1-2.png" alt="image-20220821174430511" style="zoom:60%;" />
 
 
 
 ### HTTP響應報文
 
-<img src="../assets-img/axios/1-3.png" alt="image-20220821174553128" style="zoom:60%" align="left"/>
+<img src="../assets-img/axios/1-3.png" alt="image-20220821174553128" style="zoom:60%" />
 
-<img src="../assets-img/axios/1-4.png" alt="image-20220821174909861" style="zoom:60%;" align="left" />
+<img src="../assets-img/axios/1-4.png" alt="image-20220821174909861" style="zoom:60%;"  />
 
 
 
 
 ## 02 請求方式與請求參數的總結
 
-<img src="..\assets-img\axios\2.png" alt="image-20220821175226462" style="zoom:67%;" align="left"/>
+<img src="..\assets-img\axios\2.png" alt="image-20220821175226462" style="zoom:67%;" />
 
 
 
-<img src="..\assets-img\axios\2-2.png" alt="image-20220821175226462" style="zoom:67%;" align="left"/>
+<img src="..\assets-img\axios\2-2.png" alt="image-20220821175226462" style="zoom:67%;" />
 
 
 
-<img src="..\assets-img\axios\2-3.png" alt="image-20220821175226462" style="zoom:67%;" align="left"/>
+<img src="..\assets-img\axios\2-3.png" alt="image-20220821175226462" style="zoom:67%;" />
 
 
 
-<img src="..\assets-img\axios\2-4.png" alt="image-20220821175226462" style="zoom:67%;" align="left"/>
+<img src="..\assets-img\axios\2-4.png" alt="image-20220821175226462" style="zoom:67%;" />
 
 
 
@@ -49,7 +49,7 @@ GitHub: https://github.com/axios/axios
 
 請求參數：query params body(urlencoded, json)
 
-<img src="..\assets-img\axios\2-5.png" alt="image-20220821175226462" style="zoom:67%;" align="left"/>
+<img src="..\assets-img\axios\2-5.png" alt="image-20220821175226462" style="zoom:67%;" />
 
 
 
@@ -57,13 +57,13 @@ GitHub: https://github.com/axios/axios
 
 ## 03 API的分類
 
-<img src="..\assets-img\axios\3.png" alt="image-20220821175226462" style="zoom:67%;" align="left"/>
+<img src="..\assets-img\axios\3.png" alt="image-20220821175226462" style="zoom:67%;" />
 
 
 
 在server端(express.js)，**RESTful API可以在同一個路徑可以進行增刪改查**
 
-<img src="..\assets-img\axios\3-2.png" alt="image-20220821175226462" style="zoom:50%;" align="left"/>
+<img src="..\assets-img\axios\3-2.png" alt="image-20220821175226462" style="zoom:50%;" />
 
 
 
@@ -92,7 +92,7 @@ json-server db.json
 
 請求參數：利用query params
 
-<img src="..\assets-img\axios\5.png" alt="image-20220821175226462" style="zoom:50%;" align="left"/>
+<img src="..\assets-img\axios\5.png" alt="image-20220821175226462" style="zoom:50%;" />
 
 
 
@@ -100,7 +100,7 @@ json-server db.json
 
 請求參數：利用body的x-www-form-urlencoded (json-server不能用query params, id自動增加)
 
-<img src="..\assets-img\axios\5-2.png" alt="image-20220821175226462" style="zoom:50%;" align="left"/>
+<img src="..\assets-img\axios\5-2.png" alt="image-20220821175226462" style="zoom:50%;" />
 
 
 
@@ -108,7 +108,7 @@ json-server db.json
 
 請求參數：**更新的數據**利用body的x-www-form-urlencoded，**id利用路徑params**(json-server規定)
 
-<img src="..\assets-img\axios\5-3.png" alt="image-20220821175226462" style="zoom:50%;" align="left"/>
+<img src="..\assets-img\axios\5-3.png" alt="image-20220821175226462" style="zoom:50%;" />
 
 
 
@@ -116,13 +116,13 @@ json-server db.json
 
 請求參數：**id利用路徑params**(json-server規定)
 
-<img src="..\assets-img\axios\5-4.png" alt="image-20220821175226462" style="zoom:50%;" align="left"/>
+<img src="..\assets-img\axios\5-4.png" alt="image-20220821175226462" style="zoom:50%;" />
 
 
 
 Postman會在header加已選擇的content-type
 
-<img src="..\assets-img\axios\5-6.png" alt="image-20220821175226462" style="zoom:80%;" align="left"/>
+<img src="..\assets-img\axios\5-6.png" alt="image-20220821175226462" style="zoom:80%;" />
 
 
 
@@ -132,13 +132,13 @@ Postman會在header加已選擇的content-type
 
 ## 06 一般http請求與ajax請求
 
-<img src="..\assets-img\axios\6.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+<img src="..\assets-img\axios\6.png" alt="image-20220821175226462" style="zoom:60%;" />
 
 
 
 ## 07 08 09 axios
 
-<img src="..\assets-img\axios\7.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+<img src="..\assets-img\axios\7.png" alt="image-20220821175226462" style="zoom:60%;" />
 
 
 
@@ -146,7 +146,7 @@ Postman會在header加已選擇的content-type
 
 apidoc 建立api文檔 https://apidocjs.com/
 
-<img src="..\assets-img\axios\8.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+<img src="..\assets-img\axios\8.png" alt="image-20220821175226462" style="zoom:60%;" />
 
 
 
@@ -154,15 +154,15 @@ apidoc 建立api文檔 https://apidocjs.com/
 
 ### 模板
 
-<img src="..\assets-img\axios\9-4.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+<img src="..\assets-img\axios\9-4.png" alt="image-20220821175226462" style="zoom:60%;" />
 
 
 
-<img src="..\assets-img\axios\9-5.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+<img src="..\assets-img\axios\9-5.png" alt="image-20220821175226462" style="zoom:60%;" />
 
 
 
-<img src="..\assets-img\axios\9-6.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+<img src="..\assets-img\axios\9-6.png" alt="image-20220821175226462" style="zoom:60%;" />
 
 
 
@@ -182,7 +182,7 @@ btn.onclick=()=>{
 
 ### response實例
 
-<img src="..\assets-img\axios\8-1.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+<img src="..\assets-img\axios\8-1.png" alt="image-20220821175226462" style="zoom:60%;" />
 
 
 
@@ -216,7 +216,7 @@ btn.onclick = async ()=>{
 
 可以配置`timeout:2000`，超時error會顯示出timeout
 
-<img src="..\assets-img\axios\9.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+<img src="..\assets-img\axios\9.png" alt="image-20220821175226462" style="zoom:60%;" />
 
 ### GET - params
 
@@ -233,7 +233,7 @@ axios({
 )
 ```
 
-<img src="..\assets-img\axios\9-2.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+<img src="..\assets-img\axios\9-2.png" alt="image-20220821175226462" style="zoom:60%;" />
 
 ### POST - data
 
@@ -257,7 +257,7 @@ axios({
     data:`name=${personName.value}&age=${personAge.value}`
 ```
 
-<img src="..\assets-img\axios\9-3.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+<img src="..\assets-img\axios\9-3.png" alt="image-20220821175226462" style="zoom:60%;" />
 
 ### PUT - data
 
@@ -292,7 +292,7 @@ axios({
 
 ### 總結
 
-<img src="..\assets-img\axios\9-7.png" alt="image-20220821175226462" style="zoom:80%;" align="left"/>
+<img src="..\assets-img\axios\9-7.png" alt="image-20220821175226462" style="zoom:80%;" />
 
 
 
@@ -316,19 +316,19 @@ axios({
 
 目的：可以不同的axios做不同的配置
 
-<img src="..\assets-img\axios\11.png" alt="image-20220821175226462" style="zoom:80%;" align="left"/>
+<img src="..\assets-img\axios\11.png" alt="image-20220821175226462" style="zoom:80%;" />
 
 有些網站會block掉請求頭(headers)
 
 ### 總結
 
-<img src="..\assets-img\axios\11-2.png" alt="image-20220821175226462" style="zoom:80%;" align="left"/>
+<img src="..\assets-img\axios\11-2.png" alt="image-20220821175226462" style="zoom:80%;" />
 
 
 
 ## 12 複習async await
 
-<img src="..\assets-img\axios\12.png" alt="image-20220821175226462" style="zoom:80%;" align="left"/>
+<img src="..\assets-img\axios\12.png" alt="image-20220821175226462" style="zoom:80%;" />
 
 
 
@@ -345,7 +345,7 @@ axios.interceptors.request.use((config)=>{
 })
 ```
 
-<img src="..\assets-img\axios\13.png" alt="image-20220821175226462" style="zoom:80%;" align="left"/>
+<img src="..\assets-img\axios\13.png" alt="image-20220821175226462" style="zoom:80%;" />
 
 ### axios.interceptors.response.use
 
@@ -368,23 +368,23 @@ axios.interceptors.response.use(
 
 `error=>{return new Promise(()=>{})}` 會令下面的axios走向成功(response)
 
-<img src="..\assets-img\axios\14.png" alt="image-20220821175226462" style="zoom:80%;" align="left"/>
+<img src="..\assets-img\axios\14.png" alt="image-20220821175226462" style="zoom:80%;" />
 
-<img src="..\assets-img\axios\14-2.png" alt="image-20220821175226462" style="zoom:80%;" align="left"/>
+<img src="..\assets-img\axios\14-2.png" alt="image-20220821175226462" style="zoom:80%;" />
 
 
 
 ## 15 16 取消請求
 
-<img src="..\assets-img\axios\15.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+<img src="..\assets-img\axios\15.png" alt="image-20220821175226462" style="zoom:60%;" />
 
 ### 利用interceptors統一管理任意請求的取消
 
-<img src="..\assets-img\axios\16.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+<img src="..\assets-img\axios\16.png" alt="image-20220821175226462" style="zoom:60%;" />
 
 然後之後的axios只需處理success response!
 
-<img src="..\assets-img\axios\16-2.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+<img src="..\assets-img\axios\16-2.png" alt="image-20220821175226462" style="zoom:60%;" />
 
 
 
@@ -392,10 +392,10 @@ axios.interceptors.response.use(
 
 ### 失敗例子
 
-<img src="..\assets-img\axios\17.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+<img src="..\assets-img\axios\17.png" alt="image-20220821175226462" style="zoom:60%;" />
 
 ### 正確做法 `axios.all([])`
 
-<img src="..\assets-img\axios\17-2.png" alt="image-20220821175226462" style="zoom:60%;" align="left"/>
+<img src="..\assets-img\axios\17-2.png" alt="image-20220821175226462" style="zoom:60%;" />
 
 test1 test2 test3 **同時發送請求**，而test2會delay 3秒，導致test1 test3也要等3秒才**一起response**，response的順序為[test1, test2, test3]，不會因test2 delay而變成了[test1, test3, test2]
