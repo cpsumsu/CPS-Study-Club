@@ -8,11 +8,24 @@ Mipmapping技術在1983年由Lance Williams 發明，在他的論文 Pyramidal p
 
 例如，在一個場景中，彩現貼圖需要填滿的空間大小是40x40像素的話。
 
-如果沒有三線性過濾，那32x32 會被放大顯示，或者有三線性過濾，會在64x64和32x32之間切換
+如果沒有三線性過濾，那32x32 會被放大顯示，或者有三線性過濾，會在64x64和32x32之間切換。
 
 ![Mipmappping](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/MipMap_Example_STS101.jpg/330px-MipMap_Example_STS101.jpg)
 
-簡單應用
+# 應用場景:
+仔細觀察這一系列圖片中是否存在奇怪的地方?
+![](https://cdn.discordapp.com/attachments/1003320902731186196/1011490150557163601/unknown.png)
+![](https://cdn.discordapp.com/attachments/1003320902731186196/1011490151303745617/unknown.png)
+![](https://cdn.discordapp.com/attachments/1003320902731186196/1011490151643480134/unknown.png)
+![](https://cdn.discordapp.com/attachments/1003320902731186196/1011490152088088607/unknown.png)
+
+發現了嗎?這些黑白相間的距離變得越來越大了。
+
+這是因為我們採樣材質的過程中，由於我們離照片的距離越來越遠，採樣材質的間隔就會變得越來越大，同時紋理的大小是固定的，這以上的條件造成了很大的問題，此時，我們使用Mipmapping技術，生產一系列紋理圖像。
+
+![](https://media.discordapp.net/attachments/894788659356794880/1012545573007663144/unknown.png?width=983&height=1001)
+
+# 簡單應用
 ```c++
 Texture::Texture( Graphics& gfx,const std::string& path,UINT slot )
 		:
@@ -102,6 +115,9 @@ GetContext( gfx )->UpdateSubresource(
 			pTexture.Get(),0u,nullptr,s.GetBufferPtrConst(),s.GetWidth() * sizeof( Surface::Color ),0u
 		);
 ```
+
+![finish](https://cdn.discordapp.com/attachments/1003320902731186196/1011980253226340452/unknown.png)
+效果不錯!
 
 寫一個測試函數用作計算miplevel
 ```c++
