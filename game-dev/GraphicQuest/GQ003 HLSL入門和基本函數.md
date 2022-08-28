@@ -29,21 +29,28 @@ HLSL是由微軟開發的，在Windows平台上一家獨大，多用於遊戲領
 
 # 基本數學運算
 <details>
-- max（a，b）	返回較大的
-- min（a，b）	返回較小的
-- mul（a，b）	兩向量相乘，常用於矩陣運算
-- abs（a）	    返回a的絕對值
-- round（x）	返回與x最近的整數
-- sqrt（x）	    返回x的平方根
-- rsqrt（x）	返回x的平方根的倒數
-- degrees（x）	將弧度轉化為角度
-- redians（x）	將角度轉化為弧度
-- noise（x）	噪聲函數,在每個像素點上輸出0/1可形成噪波圖
+| max（a，b） | 返回較大的 |
+| min（a，b） |	返回較小的 |
+| mul（a，b） | 兩向量相乘，常用於矩陣運算 |
+| abs（a）	  | 返回a的絕對值 |
+| round（x）  | 返回與x最近的整數 |
+| sqrt（x）	  | 返回x的平方根 |
+| rsqrt（x）  | 返回x的平方根的倒數 |
+| degrees（x）| 將弧度轉化為角度 |
+| redians（x）| 將角度轉化為弧度 |
+| noise（x）  | 噪聲函數,在每個像素點上輸出0/1可形成噪波圖 |
 </details>
 
 # 冪指對函數
 <details>
-
+| pow（x，y） | x的y次冪（x、y都可以是自變量或具體數）| $ x^{y}x $ |
+| exp（x）| 返回以e為底的指數函數 | $ e^{x} $ |
+| exp2（value x）|	返回以2為底，x為指數的冪 | 2 x 2^{x}2 |
+| ldexp（x，exp）|	返回與2的exp次方的乘積 | $ x * 2 e x p 2^{exp}2 $ |
+| log（x）	返回指定值的以e為底數的對數 | $ lnx $ |
+| log10（x）| 求以10為底的對數 | log_{10}x |
+| log2（x）	| 求以2為底數的對數 | log_{2}x |
+| frexp（x，out exp）|	將浮點數分解成尾數和指數 x=ret*2^{exp}| x的返回值是尾數,exp參數返回的值是指數（加上out會返回exp和規格化小數）|
 </details>
 
 # 類型判斷類
@@ -85,3 +92,6 @@ HLSL是由微軟開發的，在Windows平台上一家獨大，多用於遊戲領
 <details>
 
 </details>
+
+# 備忘
+https://docs.microsoft.com/zh-cn/windows/win32/direct3dhlsl/dx-graphics-hlsl-intrinsic-functions?redirectedfrom=MSDN
