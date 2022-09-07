@@ -157,7 +157,7 @@ HLSL是由微軟開發的，在Windows平台上一家獨大，多用於遊戲領
 ![](pic/Shader-Derivatives-1.png)
 
 # 示例代碼
-在Unity中嘗試調用 tex2D ddx ddy 等函數
+在Unity中嘗試調用 tex2D ddx ddy 等函數，在/Shader下ShaderOfDdx文件裡面有源碼
 
 ```shaderlab
 Shader "Custom/ShaderOfDdx"
