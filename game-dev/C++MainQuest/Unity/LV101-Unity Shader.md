@@ -2,6 +2,17 @@
 
 以下為Unity Shader完整架構:
 
+```
+Shader "Custom/NewSurfaceShader"
+{
+    Properties
+    {}
+    SubShader
+    {}
+    FallBack "Diffuse"
+}
+```
+
 它們被分成了 Properties SubShader FallBack 三個部分
 
 Unity開發者為了聲明這些以下的屬性，是為了在材質面板上能夠方便地調整各種材質的屬性
@@ -22,16 +33,6 @@ Unity開發者為了聲明這些以下的屬性，是為了在材質面板上能
 - 當我們使用 SV_POSITION 去修飾頂點著色器的時候，就表示了pos包含了...
 
 <details>
-```
-Shader "Custom/NewSurfaceShader"
-{
-    Properties
-    {}
-    SubShader
-    {}
-    FallBack "Diffuse"
-}
-```
 
 ```shaderlab
 Shader "Custom/NewSurfaceShader"
