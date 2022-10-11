@@ -29,6 +29,8 @@ Play HTB
 
 [資安這條路─系統化學習滲透測試](https://ithelp.ithome.com.tw/users/20108446/ironman/4492?page=1)
 
+Hack tricks: https://book.hacktricks.xyz/
+
 Cyber-security certifications: https://pauljerimy.com/security-certification-roadmap/
 
 This helps you focus: https://pomofocus.io/
