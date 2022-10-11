@@ -1009,6 +1009,72 @@ CLI(command line interface) 用來編譯vue文件
 
 ![image-20220820225419277](../assets-img/061.png)
 
-### 這邊會選擇用vite
+## 也可以用vite (大型項目不建議)
 
-https://www.youtube.com/watch?v=FkVJCy3dao4&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K
+[vite教學](https://www.youtube.com/watch?v=FkVJCy3dao4&list=PLSCgthA1AnifSzKdpV4FWq1pLVF4FbZ4K) 
+
+在CMD, 全局安裝yarn: `npm install -g yarn` 
+
+在vscode terminal, 運行的資料夾建立vite:`yarn create vite`
+
+> 如無法run yarn https://israynotarray.com/other/20200510/1067127387/
+
+輸入project name, framework: `vue`, variant: `vue`
+
+`yarn` 安裝需要的模組和函式庫
+
+`yarn dev` 啟動vue專案
+
+### 目錄結構
+
+**yarn.lock** 記錄庫版本號，下次安裝會根據裡面的版本號安裝，並不會安裝最新的
+
+**vite.config.js** vite設定
+
+**package.json** 專案設定
+
+- *scripts* 指令碼重新命名
+- *dependencies* 記錄所需模組
+- *devDependencies* 記錄開發所需模組，打包上線版時不會被打包
+
+**node_modules/** 第三方模組 (.gitignore會ignore)
+
+**public/favicon.ico** 靜態資源，不會被打包
+
+**index.html** 首頁
+
+**src/**
+
+​	**main.js** index.html與App.vue的橋樑，mount('#app')
+
+​	**App.vue** 父組件(嵌套其他組件)
+
+​	**assests/** 靜態資源，會被vite打包
+
+​	**components** 其他組件
+
+### 修改默認配置
+
+!!因為我們用了vite，所以修改默認配置會在vite.conf.js
+
+配置文檔 https://cn.vitejs.dev/config/shared-options.html
+
+配置教學 https://ithelp.ithome.com.tw/articles/10270465
+
+---
+
+## 138 Vite
+
+<img src="../assets-img/138.png" style="zoom:80%;" />
+
+## 139 vue3 分析工程結構
+
+<img src="../assets-img/139.png" style="zoom:67%;" />
+
+`import {createApp} from 'vue'` 引入createApp
+
+vue3的新寫法：`createApp(App).mount('#app')`
+
+<img src="../assets-img/139-2.png" style="zoom:60%;" />
+
+app是一個比vm更輕盈的實例
