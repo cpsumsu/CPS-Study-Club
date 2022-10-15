@@ -10,6 +10,8 @@ Shadow Mapping 為圖像空間算法，用於快速判斷Shadow point 是否於�
 1. 以光源為視點，生成場景的深度圖(Shadow map)
 2. 將著色點(Shadow point)到光源的距離和深度圖中的對應值作比較，判斷該點是否處位陰影之中
 
+![](pic/ShaderMap.png)
+
 ``` 
 // Shadow Mapping 
 // 計算有多少點不在陰影內 
@@ -23,15 +25,15 @@ if(currentDepth < closestDepth){
 }
 ```
 ## 1.2 自遮擋問題
-### 甚麼是自遮擋?
+## 甚麼是自遮擋?
 
 在第一步生成的深度圖中，深度變化差可能比較大，但深度圖分辨率不夠，所以在生成的深度圖採樣的深度有誤差
 
-在第二步中，判斷這個著色點是否在陰影。
+在第二步中，假設著色點在光源處上可以看見，但當計算著色點到光源距離時，會誤以為比從深度圖讀取的距離長( 著色點到光源距離 > 深度圖讀取的距離 )，算法會認為這個點位於陰影之中，以為著色點在光源處上看不見。
 
-假設著色點在光源處上可以看見，但當計算著色點到光源距離時，會誤以為比從深度圖讀取的距離長( 著色點到光源距離 > 深度圖讀取的距離 )，算法會認為這個點位於陰影之中，以為著色點在光源處上看不見。
+![](pic/自遮擋.png)
 
-### 簡單的解決方法 偏倚 bias
+## 簡單的解決方法 偏倚 bias
 加入額外的變量bias作比較
 
 如果(著色點到光源距離 < 深度圖讀取的距離 + bias)，有多少點不在陰影內 
@@ -50,8 +52,11 @@ if(currentDepth < closestDepth + 0.01){
 }
 ```
 
+![](pic/biasimport.png)
+
 ## 1.3 走樣問題 Aliasing
 生成的陰影可能會呈現階梯狀，仍然是深度圖分辨率不足的問題
+![](pic/bias.png)
 
 ## 2.1 PCF (Percentage Closer Filtering) 反走樣
 改善剛剛提及的階梯狀陰影問題
@@ -83,21 +88,20 @@ V(p) = \sum_{q \in N(p)}{}w(p,q) * X^+[D_{SM}(q) - d_{scene}(p)]
 $$
 
 $$
-當中 X^ +(n) = 
-\begin{aligned}
-    1 & & ,{n > 0} \\
-    0 & & ,{otherwise}
-\end{aligned}
+
+當(n > 0)時， X^ +(n) = 1 , 否則 = 0
 
 $$
 
+假設已得到濾波卷積核w，那麼它的均值濾波(取平均值)為0.6667
 $$
-假設濾波卷積核w = \begin{bmatrix}
+w = \begin{bmatrix}
     1 & 0 & 1 \\
     1 & 0 & 0 \\
     1 & 1 & 1
-\end{bmatrix}, 那麼它的均值濾波(取平均值)為0.6667
+\end{bmatrix}, 6 / 9 = 0.6667
 $$
+
 
 ```
 // 採樣點數量
@@ -105,8 +109,11 @@ $$
 vec2 poissonDisk[NUM_SAMPLES];
 float PCF(sampler2D shadowMap, vec4 coords) 
 {
-  // 泊松分佈採樣
+  // 泊松分佈採樣 （Poisson-Disk Sample）
+  // 圓範圍內隨機取一系列坐標作為採樣點，但是這些坐標還需要滿足一定約束，即坐標與坐標之間至少有一定距離間隔
   poissonDiskSamples(coords.xy);
+  // 均勻圓盤分佈採樣（Uniform-Disk Sample）
+  // 圓範圍內隨機取一系列坐標作為採樣點；看上去比較雜亂無章，採樣效果的 noise 比較嚴重。
   //uniformDiskSamples(coords.xy);
 
   // shadow map 的大小, 越大滤波的范围越小
@@ -122,6 +129,8 @@ float PCF(sampler2D shadowMap, vec4 coords)
     vec4 closestDepthVec = texture2D(shadowMap, sampleCoord); 
     float closestDepth = unpack(closestDepthVec);
     float currentDepth = coords.z;
+    // 簡單理解
+    // float closestDepth = unpack(texture2D(shadowMap,coords.xy+disk[i]*0.001).rgba);
     if(currentDepth < closestDepth + 0.01){
       noShadowCount += 1;
     }
@@ -132,8 +141,16 @@ float PCF(sampler2D shadowMap, vec4 coords)
 }
 ```
 
-## 2.3 PCF 在 GAMES202 homework 1 的 實現過程
+效果圖
+![](pic/pcf.png)
+
+## 2.2 PCF 在 GAMES202 homework 1 的 實現過程
 1. PhongMaterial.js的buildPhongMaterial()函數通過調用PhongMaterial
 2. ShadowMaterial.js的buildShadowMaterial()函數通過調用ShadowMaterial
 3. 在ShadowMaterial中進行CalcLightMVP()
 4. 計算過後在loadOBJ中結合定義的transform和scale賦值傳入material
+   
+# 3.1 Soft Shadow
+
+# 4.1 PCSS
+
