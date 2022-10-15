@@ -84,16 +84,15 @@ $$
 4. 根據卷積核的權重w(p,q)，對結果進行加權平均，得到p點最終可見性結果
 
 $$
-V(p) = \sum_{q \in N(p)}{}w(p,q) * X^+[D_{SM}(q) - d_{scene}(p)] 
+V(p) = \sum_{q \in N(p)}w(p,q) * X^{+}[D_{SM}(q) - d_{scene}(p)]
 $$
 
 $$
-
-當(n > 0)時， X^ +(n) = 1 , 否則 = 0
-
+(n > 0), X^{+}(n) = 1
 $$
 
 假設已得到濾波卷積核w，那麼它的均值濾波(取平均值)為0.6667
+
 $$
 w = \begin{bmatrix}
     1 & 0 & 1 \\
@@ -153,4 +152,6 @@ float PCF(sampler2D shadowMap, vec4 coords)
 # 3.1 Soft Shadow
 
 # 4.1 PCSS
+
+# 5.1 VSSM
 
