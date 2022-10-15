@@ -40,6 +40,7 @@
 - 《GPU Gems 1 》
 - 《GPU Gems 2 》
 - 《GPU Gems 3 》
+- 《Game Engine Architecture》
 
 ## 倉庫目錄
 - 計算機圖形學 筆記:
