@@ -63,32 +63,24 @@ if(currentDepth < closestDepth + 0.01){
 
 ## PCF流程
 
-1. 對於某一個著色點p，先計算該點在場景中與光源的距離 
+1. 對於某一個著色點p，先計算該點在場景中與光源的距離 $D_{scene}(p)$
 
-$$
-D_{scene}(p)
-$$
+1. 取濾波卷積核w，根據卷積核的呎吋，以p點為中心，取深度圖中附近區域內保存的深度信息 $D_{SM}(q), q \in N(p)$
 
-2. 取濾波卷積核w，根據卷積核的呎吋，以p點為中心，取深度圖中附近區域內保存的深度信息
+3. 計算可見性判斷，並得出結果 $X^+[D_SM(q) - d_{scene}(p)]$
 
-$$
-D_{SM}(q), q \in N(p)
-$$
-
-3. 計算可見性判斷，並得出結果
-
-$$
-X^+[D_SM(q) - d_{scene}(p)]
-$$
-
-4. 根據卷積核的權重w(p,q)，對結果進行加權平均，得到p點最終可見性結果
+4. 根據卷積核的權重w(p,q)，對結果進行加權平均，得到p點最終可見性結果 
 
 $$
 V(p) = \sum_{q \in N(p)}w(p,q) * X^{+}[D_{SM}(q) - d_{scene}(p)]
 $$
 
 $$
-(n > 0), X^{+}(n) = 1
+X^{+}(n) = 
+\begin{aligned}
+    1 & & n > 0 \\
+    0 & & n<=0
+\end{aligned}
 $$
 
 假設已得到濾波卷積核w，那麼它的均值濾波(取平均值)為0.6667
@@ -166,19 +158,51 @@ PCSS（Percentage Closer Soft Shadows）是一種在 PCF 的基礎上得到的�
 ![PCSS 示意](pic/pcss.png)
 PCSS 算法可分為三步：
 
-1. 遮擋物搜索（blocker search）： 在深度圖上計算著色點附近給定區域的平均遮擋物深度$d_{blocker}$ ； 這個搜索遮擋物區域的範圍可以是恆定的，例如固定為$5*5$， 也可以使用啟發法（heuristics），根據光源的尺寸$w_{light}$和著色點與光源之間的距離$d_{receiver}$  確定搜索遮擋物區域的範圍；
-2. 半影估計（penumbra estimation）： 假設光源、遮擋物和著色點所在表面相互平行，根據光源的尺寸$w_{light}$，著色點與光源之間的距離$d_{receiver}$和平均遮擋物深度$d_{blocker}$ 估計陰影在著色點處的柔和程度$w_{penumbra} = \frac{d_{receiver} - d_{blocker}}{d_{blocker}} $；
-3. PCF：執行 PCF 算法，而 PCF 卷積核的尺寸和半影估計w_{penumbra}成正比；
+1. 遮擋物搜索（blocker search）： 在深度圖上計算著色點附近給定區域的平均遮擋物深度 $d_{blocker}$ ； 這個搜索遮擋物區域的範圍可以是恆定的，例如固定為 $5*5$ ， 也可以使用啟發法（heuristics），根據光源的尺寸 $w_{light}$ 和著色點與光源之間的距離 $d_{receiver}$  確定搜索遮擋物區域的範圍；
+2. 半影估計（penumbra estimation）： 假設光源、遮擋物和著色點所在表面相互平行，根據光源的尺寸 $w_{light}$ ，著色點與光源之間的距離 $d_{receiver}$ 和平均遮擋物深度$d_{blocker}$ 估計陰影在著色點處的柔和程度 $w_{penumbra} = \frac{d_{receiver} - d_{blocker}}{d_{blocker}}$ ；
+3. PCF：執行 PCF 算法，而 PCF 卷積核的尺寸和半影估計 $w_{penumbra}$ 成正比；
    
 # 4.2 PCSS 在 GAMES202 homework 1 的 實現過程
-1. 需要完善 phongFragment.glsl 中的 findBlocker(sampler2D shadowMap,vec2 uv, float zReceiver)
-2. 需要完善 phongFragment.glsl 中的 PCSS(sampler2D shadowMap, vec4 shadowCoord) 函数。findBlocker 函数中需要完成对遮挡物平均深度的计算。
+1. 需要完善 phongFragment.glsl 中的 findBlocker(sampler2D shadowMap,vec2 uv, float zReceiver)。findBlocker 函数中需要完成对遮挡物平均深度的计算。
+2. 需要完善 phongFragment.glsl 中的 PCSS(sampler2D shadowMap, vec4 shadowCoord) 函数
+
+<details>
+
+findBlocker函數實現
+
+```
+float findBlocker( sampler2D shadowMap,  vec2 uv, float zReceiver ) {
+  int blockerNum = 0;
+  float block_depth = 0.;
+  float shadowmapSize = 2048.;
+  float Stride = 50.;
+
+  poissonDiskSamples(uv);
+  
+  for (int i = 0; i < NUM_SAMPLES;++i)
+  {
+    vec4 shadow_color = 
+      texture2D(shadowMap,uv + poissonDisk[i] * Stride / shadowmapSize);
+    float shadow_depth = unpack(shadow_color);
+    if (zReceiver > shadow_depth + 0.01)
+    {
+      blockerNum++;
+      block_depth += shadow_depth;
+    }
+  }
+  if (blockerNum == 0)
+    return 1.;
+  return float(block_depth) / float(blockerNum);
+}
+```
+
+</details>
 
 
 # 5.1 VSSM
-PCSS 算法的第一步為了估計著色點平均遮擋物深度$z_{occ}$，需要讀取深度圖中該點附近所有紋元（texel）保存的深度，並與著色點的深度進行比較，求取那些比著色點深度更小的紋元深度的平均值，而在第三步為了得到平均可見性結果，也要再次重複這個統計過程。
+PCSS 算法的第一步為了估計著色點平均遮擋物深度 $z_{occ}$ ，需要讀取深度圖中該點附近所有紋元（texel）保存的深度，並與著色點的深度進行比較，求取那些比著色點深度更小的紋元深度的平均值，而在第三步為了得到平均可見性結果，也要再次重複這個統計過程。
 
 VSSM（Variance Soft Shadow Mapping） 近似了這個統計過程，大大加速了 PCSS 第一步和第三步的估計。加速的統計過程可簡單地分為如下兩步：
 
 計算著色點附近深度分佈的均值和方差；
-借助不等式估計該點附近未遮擋物的平均深度$z_{occ}$或該點的可見性判斷結果$V(p)$；
+借助不等式估計該點附近未遮擋物的平均深度 $z_{occ}$ 或該點的可見性判斷結果 $V(p)$ ；
