@@ -145,10 +145,18 @@ HLSL是由微軟開發的，在Windows平台上一家獨大，多用於遊戲領
 |texCUBEproj(s,t)|	使用投影方式的立方體紋理查找
 
 # 著色器導數函數
-偏差分導函數（在HLSL和GLSL中）是片段著色器指令，可用於計算任何值相對於屏幕空間坐標的變化率
+偏導數函數(偏差分導函數)（在HLSL和GLSL中）是片段著色器指令，可用於計算任何值相對於屏幕空間坐標的變化率
 
-## 導數計算 dFdx 和 dFdy (ddx 和 ddy)
-在三角形光柵化期間，GPU 以 2×2 的 block 片段來計算光柵化，通過取block 中像素值之間的差異來計算導數:
+偏導數函數是紋理mipmaps實現的基礎，也能實現一系列算法和效果，特別是哪些依賴於屏幕空間坐標的(比如渲染統一線寬的線框)。
+
+# 導數計算 dFdx 和 dFdy (ddx 和 ddy)
+在三角形光柵化期間，GPU 以 2×2 的 block 片段來計算光柵化，通過取block 中像素值之間的差異來計算導數
+
+# 提高內容
+1. 導數計算-續
+<details>
+
+# 導數計算-續
 
 - dFdx 從右邊片段中減去左側片段像素值 (右 - 左)
 - dFdy 從上邊片段中減去下部片段像素值 (上 - 下)
@@ -228,10 +236,15 @@ Shader "Custom/ShaderOfDdx"
 - 使用(ddx(c) + ddy(c))，沒有絕對值，會然邊緣的像素亮度差異變大，即：加強邊緣突出
 - 使用fwidth函數，可以看出邊緣變亮，突出邊緣 // fwidth(c) ==> abs(ddx(c)) + abs(ddy(c))
 
+</details>
+
+# 課外練習
+1. 嘗試在 Unity 中編寫 HLSL 代碼吧 (Unity Shaderlab)
+2. (提高) 試著了解著色器導數函數吧，看看這函數有甚麼奇淫技巧?
 
 # 備忘
-* (hlsl-intrinsic-functions)[https://docs.microsoft.com/zh-cn/windows/win32/direct3dhlsl/dx-graphics-hlsl-intrinsic-functions?redirectedfrom=MSDN]
+* [hlsl-intrinsic-functions](https://docs.microsoft.com/zh-cn/windows/win32/direct3dhlsl/dx-graphics-hlsl-intrinsic-functions?redirectedfrom=MSDN)
 
-* (shader-derivative-functions)[http://www.aclockworkberry.com/shader-derivative-functions/#footnote_3_1104]
+* [shader-derivative-functions](http://www.aclockworkberry.com/shader-derivative-functions/#footnote_3_1104)
 
-* (fwidth func in HLSL)[https://docs.microsoft.com/zh-cn/windows/desktop/direct3dhlsl/dx-graphics-hlsl-fwidth]
+* [fwidth func in HLSL](https://docs.microsoft.com/zh-cn/windows/desktop/direct3dhlsl/dx-graphics-hlsl-fwidth)

@@ -3,7 +3,74 @@
 > 我們所有的夢想都可以真的，只要我們有勇氣去追求它們（All our dreams can come true, if we have the courage to pursue them）。 
 > ———— 華特·迪士尼
 
-## 遊戲編程?
+# 遊戲編程筆記
+個人學習遊戲編程，收錄於CPSStudyClub，以後可能再整理一下倉庫內的目錄
+
+## 值得一看的b站影片
+- [GAMES-Webinar b站主頁](https://space.bilibili.com/512313464)
+  - 一個關於研究計算機圖形學組織，內有大量圖形學，每星期有研討會，包含大量關於學術界和工業界前沿知識講授。
+  - GAMES101, GAMES202, GAMES104 都是很優質的系列!
+- [CSAPP-深入理解计算机系统](https://www.bilibili.com/video/BV1cD4y1D7uR)
+  - 源於書本 - 深入理解计算机系统，不論是中文和英文都難以理解，這裡有高質量動畫影片能通俗易懂計算機原理
+## 值得一看的YT影片
+- [C++ 3D DirectX 11 Tutorial](https://www.youtube.com/watch?v=2NOgrpXks9A&t=1s&ab_channel=ChiliTomatoNoodle)
+  - 由ChiliTomatoNoodle發佈的C++ 3D DirectX 11教學，一個很硬核的教學系列，內含主要為DirectX 11 API和軟件工程等知識，學習前需要了解基本的圖形學數學知識和使用github等技巧，Chili也在Discord活躍中，在c++領域中也有許多相關影片
+- [Vol 036 如何设计一个逼真的三维模型 | 回形针](https://www.youtube.com/watch?v=LgZctC4uM3Q&t=354s&ab_channel=%E5%9B%9E%E5%BD%A2%E9%92%88PaperClip)
+  - 內有計算機圖形學中著名的貝塞爾曲線和B樣條
+## 值得一看的知乎專題
+- [《DirectX12 3D游戏开发实战》](https://zhuanlan.zhihu.com/p/422696799)
+  - DirectX12 圖形api 教學筆記
+- [实时渲染GI｜Directional Occlusion：SSDO](https://zhuanlan.zhihu.com/p/369750415)
+  - 環境光吸收質量，一種為相互靠近的物體增加柔和的陰影，極大地提升高圖像質量
+- [浅谈卡通渲染与真实感渲染结合思路](https://zhuanlan.zhihu.com/p/561494026)
+  - "三渲二" 技術導讀，很好的科普文章
+- [UE5渲染技术简介：Nanite篇](https://zhuanlan.zhihu.com/p/382687738)
+  - 在GAMES104前沿技術課上有提及，目前還沒有看懂
+## 值得一看的Github倉庫/論文
+- [Game-Programmer-Study-Notes](https://github.com/QianMo/Game-Programmer-Study-Notes)
+  - 遊戲程序員毛星雲一生生涯的讀書筆記合輯
+- [图形学论文实现](https://github.com/AngelMonica126/GraphicAlgorithm)
+  - 論文 + 代碼，助你更好理解圖形學
+- [High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/abs/2112.10752)
+  - Diffusion Models 開山論文，近期很火的NovelAI(AI畫畫)中也有相關模型
+
+## 值得一看的書
+- 《Real–time Rendering 3rd》
+- 《Real–time Rendering 4th》
+- 《GPU Gems 1 》
+- 《GPU Gems 2 》
+- 《GPU Gems 3 》
+- 《Game Engine Architecture》
+
+## 倉庫目錄
+- 計算機圖形學 筆記:
+  1. [材質的構成](./GraphicQuest/GQ001%20材質的構成.md)
+  2. [模型格式和材質](./GraphicQuest/GQ002%20模型格式和材質.md)
+  3. [HLSL入門和基本函數](./GraphicQuest/GQ004%20傳統光照模型詳解.md)
+  4. [傳統光照模型詳解](./GraphicQuest/GQ004%20傳統光照模型詳解.md)
+  5. [Gamma校正和色彩空間](./GraphicQuest/GQ005%20Gamma校正%20和%20色彩空間.md)
+  6. [LDR和HDR](./GraphicQuest/GQ006%20LDR和HDR.md)
+  7. [材質和外觀](./GraphicQuest/GQ007%20材質和外觀.md)
+  8. [相機與透鏡](./GraphicQuest/GQ008%20相機與透鏡.md)
+- 計算機圖形學筆記 - 實時渲染篇 (Real–time Rendering)
+  1. [實時渲染1_Shadow Mapping、PCSS、VSSM、SDF Shadows](./GraphicQuest/GQ009%20實時渲染1_Shadow%20Mapping、PCSS、VSSM、SDF%20Shadows.md)
+- C++ DirectX 11 筆記 (源於Chili架構):
+  1. [Mipmapping](C++MainQuest/C++DirectX/LV201-Mipmapping.md)
+  2. [Anisotropic Filtering](C++MainQuest/C++DirectX/LV202-Anisotropic%20Filtering.md)
+  3. [Alpha Compositing](C++MainQuest/C++DirectX/LV203-Alpha%20Compositing.md)
+  4. [Ztest](C++MainQuest/C++DirectX/LV204-Ztest.md)
+  5. [CD3D11](C++MainQuest/C++DirectX/LV205-CD3D11.md)
+- C++ WindowsAPI 筆記 (源於Chili架構):
+  1. [創建WinMain](C++MainQuest/C++Windows/LV001-創建WinMain.md)
+  2. [更多WinMain資料](C++MainQuest/C++Windows/LV002-更多WinMain資料.md)
+  3. [創建一個窗口](C++MainQuest/C++Windows/LV003-創建一個窗口.md)
+- C++ 雜項 筆記:
+  1. [i++和++i哪個快](./C++SideQuest/SQ001%20i++和++i哪個快.md)
+  2. [神寄的ASCII碼](C++SideQuest/SQ002%20神寄的ASCII碼.md)
+  3. [基於複製的瞬間移動](./C++SideQuest/SQ003%20基於複製的瞬間移動.md)
+  4. [COM架構](./C++SideQuest/SQ004%20COM架構.md)
+
+# 遊戲編程?
 
 遊戲編程這個方向看似很明確，其實並不然。
 製作一款遊戲可以不用學會編程語言，甚至是可以離開電腦。我們回歸到人類原始的遊戲類型桌遊，我們對這各個類型不一的紙牌也能玩的很開心，精美的卡片，多變的規則，複雜的人心，公正的主持，都是遊戲的主要構成元素，在此之上，當我們學習如何製作一款"桌遊"的規則時，我們也就成為了所謂的"Gameplay Programmer" 遊戲邏輯程序員，他們就是在遊戲世界制定所有秩序之神————忒彌斯
@@ -27,7 +94,6 @@
 4. 遊戲引擎中包含了各個部分，上面的渲染只是遊戲引擎的一部分。還有其它諸如著色器編寫、地形編寫、物理引擎編寫、模型和動畫、人工智能(AI)設計、網絡編程等等，完成渲染部分的基本學習後，你可以選擇自己感興趣的部分進行專攻，畢竟我們實際工作大多數時候是團隊開發，而不是單打獨鬥，每個人都應該精通自己所擅長的那部分。
 
 在不少的編程語言都會視其為一個項目，如貪食蛇小遊戲，俄羅斯方塊等，但這並不是我們想要在2022年玩到的遊戲。在划時代的技術下，我們更多的依賴各式各樣硬件加速技術和軟件工程技術去製作一款遊戲。
-
 
 # 備忘錄
 > 部分內容來自於知乎
