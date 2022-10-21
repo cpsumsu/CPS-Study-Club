@@ -1,4 +1,4 @@
-# 實時渲染1 Shadow Mapping、PCSS、VSSM、SDF Shadows
+# 實時渲染1 Shadow Mapping、PCSS、VSSM、SDF Shadows、VSM、MSM
 
 ## 1. Shadow Mapping (陰影映射)
 
@@ -151,7 +151,11 @@ float PCF(sampler2D shadowMap, vec4 coords)
 </details>
 
 # 3.1 Soft Shadow
+當面光源照射物體時，會在物體後面產生軟陰影（soft shadow）。軟陰影邊緣的柔和程度不固定，會隨著遮擋程度的變化而變化。
 
+雖然上一節介紹的 PCF 技術可以使陰影的邊緣變得柔和，但是單純地使用 PCF 並不能得到軟陰影，因為 PCF 濾波卷積核的尺寸固定，於是得到的陰影邊緣柔和程度也是固定的。
+
+要想得到軟陰影，可以在 PCF 的基礎上進一步發展，根據遮擋程度的變化而動態調整濾波卷積核的尺寸，使陰影邊緣的柔和程度隨著遮擋程度的變化而變化。
 # 4.1 PCSS
 PCSS（Percentage Closer Soft Shadows）是一種在 PCF 的基礎上得到的軟陰影生成技術，它根據著色點和光源之間遮擋物的相對平均深度來判斷著色點的被遮擋程度，依此選擇合適的 PCF 濾波卷積核尺寸，使得陰影邊緣的柔和程度隨著遮擋程度的變化而變化。
 
@@ -166,10 +170,10 @@ PCSS 算法可分為三步：
 1. 需要完善 phongFragment.glsl 中的 findBlocker(sampler2D shadowMap,vec2 uv, float zReceiver)。findBlocker 函数中需要完成对遮挡物平均深度的计算。
 2. 需要完善 phongFragment.glsl 中的 PCSS(sampler2D shadowMap, vec4 shadowCoord) 函数
 
+詳細在 GAMES202 homework 1 的 實現過程
 <details>
 
-findBlocker函數實現
-
+findBlocker(sampler2D shadowMap,vec2 uv, float zReceiver)函數實現
 ```
 float findBlocker( sampler2D shadowMap,  vec2 uv, float zReceiver ) {
   int blockerNum = 0;
@@ -206,3 +210,70 @@ VSSM（Variance Soft Shadow Mapping） 近似了這個統計過程，大大加�
 
 計算著色點附近深度分佈的均值和方差；
 借助不等式估計該點附近未遮擋物的平均深度 $z_{occ}$ 或該點的可見性判斷結果 $V(p)$ ；
+
+# 5.1.1 計算深度分佈的均值和方差
+隨機變量 $X$ 的數學期望 $E(X)$ 和方差 $Var(X)$ 存在如下關係：
+
+$$
+(1): Var(X) = E(X^2) - E^2(X) 
+$$
+
+只需記錄下隨機變量 $X$ 的數學期望 $E(X)$ 和 2階原點矩 $E(X^2)$ ，便能得到隨機變量所服從概率分佈的均值和方差。於是，在生成深度圖時，不僅記錄場景的深度 $z$ ，也額外記錄場景深度的平方 $z^2$ ，然後計算各自的 SAT（summed area table）。(類似前綴和)
+
+指定著色點附近區域的查詢範圍後，根據深度 SAT 和深度平方 SAT，可以快速地獲取著色點附近深度的平均值 $(z^2)_{arg}$ 和深度平方的平均值 $(z_{arg})^2$ ，分別作為深度分佈的均值和  階原點矩，並根據公式(1) 得到了深度分佈的方差 $(z^2)_{arg}-(z_{arg})^2$
+
+# 5.1.2 通過不等式估計未遮擋物的平均深度或著色點的可見性判斷結果
+切比雪夫不等式（Chebychev’s inequality）刻畫了概率分佈的概率密度函數，均值和方差之間的關係，其內容如下：
+
+$$
+P(x > t) \leq \frac{\sigma^2}{\sigma^2 + (t - \mu)^2}
+$$
+
+將著色點 $p$ 的深度記作 $z_t$ ，則 $P(x > t)$ 即是該著色點附近區域內，未被遮擋的紋元在所有紋元中所佔的比例。
+
+VSSM 直接<u>假設切比雪夫不等式中等號成立</u>：
+
+$$
+P(z > z_t) = \frac{(z^2)_{arg}-(z_{arg})^2}{(z^2)_{arg}-(z_{arg})^2 + (z_{t}-z_{arg})^2}
+$$
+
+如果此時對應於 PCSS 的第三步，則便直接得到了著色點 $p$ 的最終可見性判斷結果 $V(p) = P(z > z_t)$ 。
+
+如果此時對應於 PCSS 的第一步，則繼續假設未遮擋物的平均深度等於著色點的深度 $z_{unocc} = z_t$ ，並將著色點附近的遮擋物平均深度記作 $z_{}$ ，未遮擋物平均深度記作 ，於是存在如下關係：
+
+$$
+[1-P(z>z_t)] * z_{occ} + P(z > z_t) * z_{unocc} = z_{avg}
+$$
+
+代入相應的數值，便可以估計出遮擋物的平均深度 $z_{occ}$ 以用於 PCSS 第二步估計半影。
+
+# 6 Moment Shadow Mapping (MSM)
+VSSM 使用<a>切比雪夫不等式</a>估計著色點附近深度分佈的累積概率函數，進而計算該點附近未被遮擋的紋元占所有紋元的比例。此時，累計概率函數的重建僅用到了均值和  階原點矩。 Moment Shadow Mapping 在其基礎上對重建步驟作了改進，在重建累計概率函數時用到了更高階的原點矩，得到了更準確的擬合。
+
+因為考慮了深度的更高階項，所以消耗了更多的存放空間，重建時也消耗了更多的資源，但是的確緩解了 VSSM 生成陰影時的漏光等現象。
+
+# 7 Distance Field Soft Shadows
+和 PCSS 系列技術不同，distance field soft shadows 依靠有向距離場而不是陰影圖來生成軟陰影。
+
+有向距離場（signed distance field，SDF）  保存了三維場景中任一點與距離它最近的景物表面之間的距離。如果該點在景物內部，則距離是負數，否則是正數。
+
+從著色點  發射一根指向光源的光線，在光線傳播的過程中記錄當前點 $p$ 的有向距離場數值 $sdf(p)$ 和當前點到著色點之間的距離，計算相應的角度，並記錄下光線傳播過程中最小的那個角度 $\theta$ ，則這個角度代表了從著色點從該方向向光源望去時未被其它物體遮擋的“安全”視角。
+
+這個“安全”角越小，則著色點被其它物體遮擋的程度越大，於是可以根據“安全“角的大小調整陰影的柔和程度，由此得到軟陰影。
+
+通常， ”安全“角  的計算並非直接求取反三角函數，而是使用如下公式以減少計算耗費：
+
+$$
+\theta = min\big({\frac{k * sdf(p)}{||p - o||},1}\big)
+$$
+
+參數 $k$ 控制了陰影邊緣的柔和程度， $k$ 越大，則陰影的邊緣則越柔和。
+
+Distance Field Soft Shadows 可以生成相對高質量的軟陰影，並且速度較快，但是還是存在走樣問題，而且有向距離場需要預計算並存儲場景中每個三維點的深度信息，和 PCSS 系列技術相比消耗了更多的存儲空間，因為後者在生成深度圖時只需要計算並存儲光源處的深度信息即可。
+
+為了避免生成有向距離場時需要計算場景中每個三維點的信息，一些研究提出可以使用八叉樹之類的層次化數據結構細分場景。對於場景中那些遠離任何景物表面的區域，細分的層級可以粗糙一些，如此便減少了資源耗費。
+
+# 參考資料
+* 有向距離場（Signed Distance Field）（SDF）:
+* [虚幻引擎网格体距离场 | 虚幻引擎5.0文档 (unrealengine.com)](https://docs.unrealengine.com/5.0/zh-CN/mesh-distance-fields-in-unreal-engine/)
+
