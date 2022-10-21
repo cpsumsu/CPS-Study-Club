@@ -37,9 +37,9 @@
 ## 值得一看的書
 - 《Real–time Rendering 3rd》
 - 《Real–time Rendering 4th》
-- 《GPU Gems 1 》
-- 《GPU Gems 2 》
-- 《GPU Gems 3 》
+- [《GPU Gems 1 》](https://developer.nvidia.com/gpugems/gpugems/foreword)
+- [《GPU Gems 2 》](https://developer.nvidia.com/gpugems/gpugems2/inside-front-cover)
+- [《GPU Gems 3 》](https://developer.nvidia.com/gpugems/gpugems3/foreword)
 - 《Game Engine Architecture》
 
 ## 倉庫目錄
