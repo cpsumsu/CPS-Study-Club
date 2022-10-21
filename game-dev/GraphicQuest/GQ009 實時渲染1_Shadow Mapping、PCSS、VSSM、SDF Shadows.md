@@ -151,7 +151,11 @@ float PCF(sampler2D shadowMap, vec4 coords)
 </details>
 
 # 3.1 Soft Shadow
+當面光源照射物體時，會在物體後面產生軟陰影（soft shadow）。軟陰影邊緣的柔和程度不固定，會隨著遮擋程度的變化而變化。
 
+雖然上一節介紹的 PCF 技術可以使陰影的邊緣變得柔和，但是單純地使用 PCF 並不能得到軟陰影，因為 PCF 濾波卷積核的尺寸固定，於是得到的陰影邊緣柔和程度也是固定的。
+
+要想得到軟陰影，可以在 PCF 的基礎上進一步發展，根據遮擋程度的變化而動態調整濾波卷積核的尺寸，使陰影邊緣的柔和程度隨著遮擋程度的變化而變化。
 # 4.1 PCSS
 PCSS（Percentage Closer Soft Shadows）是一種在 PCF 的基礎上得到的軟陰影生成技術，它根據著色點和光源之間遮擋物的相對平均深度來判斷著色點的被遮擋程度，依此選擇合適的 PCF 濾波卷積核尺寸，使得陰影邊緣的柔和程度隨著遮擋程度的變化而變化。
 
@@ -166,10 +170,10 @@ PCSS 算法可分為三步：
 1. 需要完善 phongFragment.glsl 中的 findBlocker(sampler2D shadowMap,vec2 uv, float zReceiver)。findBlocker 函数中需要完成对遮挡物平均深度的计算。
 2. 需要完善 phongFragment.glsl 中的 PCSS(sampler2D shadowMap, vec4 shadowCoord) 函数
 
+詳細在 GAMES202 homework 1 的 實現過程
 <details>
 
-findBlocker函數實現
-
+findBlocker(sampler2D shadowMap,vec2 uv, float zReceiver)函數實現
 ```
 float findBlocker( sampler2D shadowMap,  vec2 uv, float zReceiver ) {
   int blockerNum = 0;
@@ -206,3 +210,37 @@ VSSM（Variance Soft Shadow Mapping） 近似了這個統計過程，大大加�
 
 計算著色點附近深度分佈的均值和方差；
 借助不等式估計該點附近未遮擋物的平均深度 $z_{occ}$ 或該點的可見性判斷結果 $V(p)$ ；
+
+# 5.1.1 計算深度分佈的均值和方差
+隨機變量 $X$ 的數學期望 $E(X)$ 和方差 $Var(X)$ 存在如下關係：
+
+$$
+(1): Var(X) = E(X^2) - E^2(X) 
+$$
+
+只需記錄下隨機變量 $X$ 的數學期望 $E(X)$ 和 2階原點矩 $E(X^2)$ ，便能得到隨機變量所服從概率分佈的均值和方差。於是，在生成深度圖時，不僅記錄場景的深度 $z$ ，也額外記錄場景深度的平方 $z^2$ ，然後計算各自的 SAT（summed area table）。(類似前綴和)
+
+指定著色點附近區域的查詢範圍後，根據深度 SAT 和深度平方 SAT，可以快速地獲取著色點附近深度的平均值 $(z^2)_{arg}$ 和深度平方的平均值 $(z_{arg})^2$ ，分別作為深度分佈的均值和  階原點矩，並根據公式(1) 得到了深度分佈的方差 $(z^2)_{arg}-(z_{arg})^2$
+
+# 5.1.2 通過不等式估計未遮擋物的平均深度或著色點的可見性判斷結果
+切比雪夫不等式（Chebychev’s inequality）刻畫了概率分佈的概率密度函數，均值和方差之間的關係，其內容如下：
+
+$$
+P(x > t) \leq \frac{\sigma^2}{\sigma^2 + (t - \mu)^2}
+$$
+
+將著色點 $p$ 的深度記作 $z_t$ ，則 $P(x > t)$ 即是該著色點附近區域內，未被遮擋的紋元在所有紋元中所佔的比例。
+
+VSSM 直接<u>假設切比雪夫不等式中等號成立</u>：
+
+$$
+P(z > z_t) = \frac{(z^2)_{arg}-(z_{arg})^2}{(z^2)_{arg}-(z_{arg})^2 + (z_{t}-z_{arg})^2}
+$$
+
+如果此時對應於 PCSS 的第三步，則便直接得到了著色點 $p$ 的最終可見性判斷結果 $V(p) = P(z > z_t)$ 。
+
+如果此時對應於 PCSS 的第一步，則繼續假設未遮擋物的平均深度等於著色點的深度 $z_{unocc} = z_t$ ，並將著色點附近的遮擋物平均深度記作 $z_{}$ ，未遮擋物平均深度記作 ，於是存在如下關係：
+
+
+
+代入相應的數值，便可以估計出遮擋物的平均深度  以用於 PCSS 第二步估計半影。
