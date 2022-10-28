@@ -1,4 +1,4 @@
-# 實時渲染1 Shadow Mapping、PCSS、VSSM、SDF Shadows、VSM、MSM
+# Shadow Mapping、PCSS、VSSM、SDF Shadows、VSM、MSM
 
 ## 1. Shadow Mapping (陰影映射)
 
@@ -267,7 +267,7 @@ VSSM 使用<a>切比雪夫不等式</a>估計著色點附近深度分佈的累�
 
 這個“安全”角越小，則著色點被其它物體遮擋的程度越大，於是可以根據“安全“角的大小調整陰影的柔和程度，由此得到軟陰影。
 
-通常， ”安全“角  的計算並非直接求取反三角函數，而是使用如下公式以減少計算耗費：
+通常，”安全“角  的計算並非直接求取反三角函數，而是使用如下公式以減少計算耗費：
 
 $$
 \theta = min\big({\frac{k * sdf(p)}{||p - o||},1}\big)
