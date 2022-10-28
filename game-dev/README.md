@@ -52,8 +52,10 @@
   6. [LDR和HDR](./GraphicQuest/GQ006%20LDR和HDR.md)
   7. [材質和外觀](./GraphicQuest/GQ007%20材質和外觀.md)
   8. [相機與透鏡](./GraphicQuest/GQ008%20相機與透鏡.md)
+  9. [實現Flowmap](./GraphicQuest/GQ011%20實現Flowmap.md)
 - 計算機圖形學筆記 - 實時渲染篇 (Real–time Rendering)
   1. [實時渲染1_Shadow Mapping、PCSS、VSSM、SDF Shadows](./GraphicQuest/GQ009%20實時渲染1_Shadow%20Mapping、PCSS、VSSM、SDF%20Shadows.md)
+  2. [實時渲染2 延遲渲染 Deferred Rendering](./GraphicQuest/GQ010%20實時渲染2%20延遲渲染%20Deferred%20Rendering.md)
 - C++ DirectX 11 筆記 (源於Chili架構):
   1. [Mipmapping](C++MainQuest/C++DirectX/LV201-Mipmapping.md)
   2. [Anisotropic Filtering](C++MainQuest/C++DirectX/LV202-Anisotropic%20Filtering.md)
