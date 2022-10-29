@@ -62,6 +62,11 @@
   3. [Alpha Compositing](C++MainQuest/C++DirectX/LV203-Alpha%20Compositing.md)
   4. [Ztest](C++MainQuest/C++DirectX/LV204-Ztest.md)
   5. [CD3D11](C++MainQuest/C++DirectX/LV205-CD3D11.md)
+- Unity 筆記 (青春版):
+  1. [Unity簡介](C++MainQuest/Unity/LV001-Unity簡介.md)
+  2. [Unity介面](C++MainQuest/Unity/LV002-Unity介面.md)
+  3. [Unity Shader](C++MainQuest/Unity/LV101-Unity%20Shader.md)
+  4. [Lambert光照模型](C++MainQuest/Unity/LV103-Lambert光照模型.md)
 - C++ WindowsAPI 筆記 (源於Chili架構):
   1. [創建WinMain](C++MainQuest/C++Windows/LV001-創建WinMain.md)
   2. [更多WinMain資料](C++MainQuest/C++Windows/LV002-更多WinMain資料.md)
@@ -71,6 +76,8 @@
   2. [神寄的ASCII碼](C++SideQuest/SQ002%20神寄的ASCII碼.md)
   3. [基於複製的瞬間移動](./C++SideQuest/SQ003%20基於複製的瞬間移動.md)
   4. [COM架構](./C++SideQuest/SQ004%20COM架構.md)
+- 遊戲開發工具包: 
+  1. [免費／付費美術資源地址整合](art_asset.md)
 
 # 遊戲編程?
 
