@@ -4,6 +4,7 @@
 
 * [快速了解Gamma校正](https://www.bilibili.com/video/BV15t411Y7cf/?spm_id_from=autoNext&vd_source=c8f797eb0ed2b9ae031c806a2b48a232)
 * [Gamma, Linear, sRGB 這些都是甚麼?](https://blog.csdn.net/lrh3025/article/details/102723090?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-102723090-blog-117229466.pc_relevant_aa_2&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-102723090-blog-117229466.pc_relevant_aa_2&utm_relevant_index=1)
+* [@橙与青 | 色彩空间为什么那么空？色度系统、色度图、色域、伽马、白点…](https://www.bilibili.com/video/BV19e4y1y7Mo/?spm_id_from=333.851.b_7265636f6d6d656e64.6&vd_source=c8f797eb0ed2b9ae031c806a2b48a232)
 
 # CIE RGB
 人類眼睛有對於短（S, 420-440nm）、中（M, 530-540nm）和長（L, 560-580nm）波長的光感受器（視錐細胞）
