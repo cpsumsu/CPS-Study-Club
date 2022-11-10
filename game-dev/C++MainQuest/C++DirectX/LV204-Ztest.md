@@ -17,11 +17,9 @@ bindablePtrs.push_back( Blender::Resolve( gfx,hasAlphaDiffuse ) );
     clip(dtex.a < 0.1f ? -1 : 1);
 ```
 
-知道為什麼這裡的 dtex.a 要小於 0.1f 嗎?
+用於移除樹葉中透明的地方
 
 # 解答
-
-
 
 # 備忘
 
