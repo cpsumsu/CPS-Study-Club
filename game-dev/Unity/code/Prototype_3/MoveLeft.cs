@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveLeft : MonoBehaviour
 {
-    private float speed = 5;
+    public float speed = 10;
     private PlayerController playerController;
     private float leftBound = -15;
 
@@ -17,7 +17,11 @@ public class MoveLeft : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerController.gameOver == false)
+        if (playerController.doubleSpeed && !playerController.gameOver)
+        {
+            transform.Translate(Vector3.left * Time.deltaTime * speed * 2);
+        }
+        else if (!playerController.gameOver)
         {
             transform.Translate(Vector3.left * Time.deltaTime * speed);
         }

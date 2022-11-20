@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float gravityModifier;
     public bool isOnGround = true;
+    private int jumptime = 0;
     public bool gameOver = false;
 
     private Animator playerAnim;
@@ -16,6 +17,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpSound;
     public AudioClip crashSound;
     public AudioSource playerAudio;
+    private MoveLeft moveleftBackground;
+    private GameObject[] moveleftObs;
+    public bool doubleSpeed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,21 +33,33 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
+        moveleftBackground = GameObject.Find("Background").GetComponent<MoveLeft>();
+        moveleftObs = GameObject.FindGameObjectsWithTag("Obstacle");
+        if (Input.GetKeyDown(KeyCode.Space) && jumptime < 2 && !gameOver)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isOnGround = false;
+            jumptime++;
             playerAnim.SetTrigger("Jump_trig");
             dirtParticle.Stop();
             // 在Animator中存在Jump_trig
 
             playerAudio.PlayOneShot(jumpSound,1.0f);
         }
+        if (Input.GetButton("LShift") && !gameOver)
+        {
+            doubleSpeed = true;
+            playerAnim.SetFloat("Speed_Multiplier",2.0f);
+        }
+        else if (doubleSpeed)
+        {
+            doubleSpeed = false;
+            playerAnim.SetFloat("Speed_Multiplier",1.0f);
+        }
     }
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isOnGround = true;
+            jumptime = 0;
             dirtParticle.Play();
         }
         else if (collision.gameObject.CompareTag("Obstacle"))
