@@ -30,7 +30,15 @@ $$
 在實時渲染中存在如下重要的估算定積分方法，將兩個函數乘積的定積分拆解成兩個函數定積分的乘積：
 
 $$
-\int_{\Omega} f(x) g(x)\, \mathrm{d}x \approx \frac{\int_{\Omega} f(x)\,\mathrm{d}x}{\int_{\Omega}\mathrm{d}x} \cdot \int_{\Omega} g(x)\,\mathrm{d}x \\
+\begin{align}
+\int_{\Omega} f(x) g(x)\, \mathrm{d}x 
+\end{align}
+$$
+
+$$
+\begin{align}
+\approx \frac{\int_{\Omega} f(x)\,\mathrm{d}x}{\int_{\Omega}\mathrm{d}x} \cdot \int_{\Omega} g(x)\,\mathrm{d}x \\
+\end{align}
 $$
 
 - 假如被積函數較為平滑（例如漫反射材質的 BRDF），或者支撐集較小（例如光源相對不多時直接採樣光源所用的可見性函數），則在實時渲染中認為該估計基本成立；
@@ -84,7 +92,18 @@ $$
 然後，後一部分的定積分可以根據菲涅爾項進行拆解：
 
 $$
-\begin{align} \int_{\Omega^{+}}  f_{r}\left( p ,\, \omega_i ,\, \omega_o \right) \cos\theta_i \mathrm{d}\omega_i &\approx \int_{\Omega^{+}}  \frac{f_{r}\left( p ,\, \omega_i ,\, \omega_o \right)}{F\left(\theta_i\right)} \left[ R_0 + \left(1-R_0\right) \left(1-\cos\theta_i\right)^5 \right] \cos\theta_i \mathrm{d}\omega_i \\ &=  R_0 \int_{\Omega^{+}}  \frac{f_{r}\left( p ,\, \omega_i ,\, \omega_o \right)}{F\left(\theta_i\right)} \left[ 1 - \left(1-\cos\theta_i\right)^5 \right] \cos\theta_i \mathrm{d}\omega_i + \int_{\Omega^{+}}  \frac{f_{r}\left( p ,\, \omega_i ,\, \omega_o \right)}{F\left(\theta_i\right)}  \left(1-\cos\theta_i\right)^5  \cos\theta_i \mathrm{d}\omega_i \end{align} \\
+\begin{align} \int_{\Omega^{+}}  f_{r}\left( p ,\, \omega_i ,\, \omega_o \right) \cos\theta_i \mathrm{d}\omega_i
+\end{align}
+$$
+
+$$
+\begin{align}
+\approx \int_{\Omega^{+}}  \frac{f_{r}\left( p ,\, \omega_i ,\, \omega_o \right)}{F\left(\theta_i\right)} \left[ R_0 + \left(1-R_0\right) \left(1-\cos\theta_i\right)^5 \right] \cos\theta_i \mathrm{d}\omega_i 
+\end{align}
+$$
+
+$$
+\begin{align} &=  R_0 \int_{\Omega^{+}}  \frac{f_{r}\left( p ,\, \omega_i ,\, \omega_o \right)}{F\left(\theta_i\right)} \left[ 1 - \left(1-\cos\theta_i\right)^5 \right] \cos\theta_i \mathrm{d}\omega_i + \int_{\Omega^{+}}  \frac{f_{r}\left( p ,\, \omega_i ,\, \omega_o \right)}{F\left(\theta_i\right)}  \left(1-\cos\theta_i\right)^5  \cos\theta_i \mathrm{d}\omega_i \end{align}
 $$
 
 於是定積分不再依賴於基底顏色 R0，在預計算 $\frac{f_{r}\left( p ,, \omega_i ,, \omega_o \right)}{ F\left(\theta\right)}$ 時只需要考慮粗糙程度和入射角的餘弦即可。
@@ -121,16 +140,27 @@ PRT 效果示意 圖源：[GAMES202 閆令琪]
 PRT 將繪製方程的被積函數拆分成光照（lighting）和光線傳輸（light transport）這兩部分，分別預計算而得到兩張紋理圖像：
 
 $$
-\begin{align} \underset{ \text{給定點的著色結果} }{ \underbrace{ L_o \left( \omega_i \right) } } &= \int_{\Omega^{+}}  \underset{ \text{光照} }{ \underbrace{ L_{i} \left( \omega_i \right)  } } \cdot \underset{ \text{ BRDF} }{ \underbrace{ f_{r}\left(  \omega_i ,\, \omega_o \right)  \cos\theta_i  } } \cdot \underset{ \text{可見性} }{ \underbrace{ V\left(\omega_i\right)   } }  \mathrm{d}\omega_i \\ &= \int_{\Omega^{+}}  \underset{ \text{光照} }{ \underbrace{ L_{i} \left( \omega_i \right)  } } \cdot \underset{ \text{光線傳輸，記作 } T\left(\omega_i ,\, \omega_o \right) }{ \underbrace{ f_{r}\left( \omega_i ,\, \omega_o \right)  \cos\theta_i V\left(\omega_i\right)   } }  \mathrm{d}\omega_i \end{align} \\
+\begin{align} \underset{ \text{給定點的著色結果} }{ \underbrace{ L_o \left( \omega_i \right) } } &= \int_{\Omega^{+}}  \underset{ \text{光照} }{ \underbrace{ L_{i} \left( \omega_i \right)  } } \cdot \underset{ \text{ BRDF} }{ \underbrace{ f_{r}\left(  \omega_i ,\, \omega_o \right)  \cos\theta_i  } } \cdot \underset{ \text{可見性} }{ \underbrace{ V\left(\omega_i\right)   } }  \mathrm{d}\omega_i
+\end{align}
 $$
 
-然後，把這兩個在空間域的圖像信號變換到頻域，表示成基本信號 $\left\{ B_{i}\left(\omega_i\right) \right\}$ 的線性組合：
+$$
+\begin{align}
+&= \int_{\Omega^{+}}  \underset{ \text{光照} }{ \underbrace{ L_{i} \left( \omega_i \right)  } } \cdot \underset{ \text{光線傳輸，記作 } T\left(\omega_i ,\, \omega_o \right) }{ \underbrace{ f_{r}\left( \omega_i ,\, \omega_o \right)  \cos\theta_i V\left(\omega_i\right)   } }  \mathrm{d}\omega_i \end{align}
+$$
+
+然後，把這兩個在空間域的圖像信號變換到頻域，表示成基本信號 $B_{i}\left(\omega_i\right)$ 的線性組合：
 
 $$
-\begin{align} L_{i} \left( \omega_i \right) &= \sum_{p} \underset{ \text{光照系數} }{ \underbrace{ l_p }} \cdot \underset{ \text{基函數} }{ \underbrace{ B_p \left(\omega_i\right) }} \\ \\ T\left(\omega_i,\, \omega_o\right) &= \sum_{q} \underset{ \text{光線傳輸系數} }{ \underbrace{ t_q \left(\omega_o\right)  }} \cdot \underset{ \text{基函數} }{ \underbrace{ B_q\left(\omega_i\right) }} \end{align} \\
+\begin{align} L_{i} \left( \omega_i \right) &= \sum_{p} \underset{ \text{光照系數} }{ \underbrace{ l_p }} \cdot \underset{ \text{基函數} }{ \underbrace{ B_p \left(\omega_i\right) }} \end{align}
 $$
 
-基本信號構成了正交函數係 $\left\{ B_{i}\left(\omega_i\right) \right\}$ ，在空間域的圖像信號與各個基函數的點積運算可以得到該函數正交級數的各項係數：
+$$
+\begin{align}
+T\left(\omega_i,\, \omega_o\right) &= \sum_{q} \underset{ \text{光線傳輸系數} }{ \underbrace{ t_q \left(\omega_o\right)  }} \cdot \underset{ \text{基函數} }{ \underbrace{ B_q\left(\omega_i\right) }} \end{align}
+$$
+
+基本信號構成了正交函數系 $\left\{ B_{i}\left(\omega_i\right) \right\}$ ，在空間域的圖像信號與各個基函數的點積運算可以得到該函數正交級數的各項係數：
 
 $$
 l_p =  \int_{\Omega^+} L_{i} \left( \omega_i \right) \, \overline{B_p\left(\omega_i\right)}  \,\mathrm{d}\omega_i \\ t_q \left(\omega_o\right)  =  \int_{\Omega^+} T \left( \omega_i ,\, \omega_o \right) \, \overline{B_q\left(\omega_i\right)}  \,\mathrm{d}\omega_i \\
@@ -163,7 +193,24 @@ $$
 在繪製方程計算定積分時，BRDF 可以被拆解出來，可以理解為：
 
 $$
-\begin{align} L\left( \omega_o \right)  &= \int_{\Omega^{+}}  L_{i} \left( \omega_i \right) \cdot f_{r}\left( \omega_i ,\, \omega_o \right) \cos\theta_i V\left(\omega_i\right) \,\mathrm{d}\omega_i \\ &= \int_{\Omega^{+}} \sum_{p} \left[l_p \cdot B_p\left(\omega_i\right)\right] \cdot \rho \cdot \cos\theta_i V\left(\omega_i\right) \,\mathrm{d}\omega_i \\ &= \rho \sum_{p} l_p  \underset{ \text{恰好是光線傳輸用球諧函數線性表示} }{ \underbrace{ \int_{\Omega^{+}} B_p\left(\omega_i\right) \cdot \cos\theta_i V\left(\omega_i\right)  \,\mathrm{d}\omega_i }} \\ &= \rho \sum_{p} l_p \cdot T_p \left(\omega_i\right) = \rho \cdot\begin{bmatrix} l_0 & l_1 & \cdots l_p \end{bmatrix} \begin{bmatrix} T_0 \left(\omega_i\right) & T_1 \left(\omega_i\right) & \cdots & T_p \left(\omega_i\right) \end{bmatrix}^T \end{align} \\
+\begin{align} L\left( \omega_o \right)  &= \int_{\Omega^{+}}  L_{i} \left( \omega_i \right) \cdot f_{r}\left( \omega_i ,\, \omega_o \right) \cos\theta_i V\left(\omega_i\right) \,\mathrm{d}\omega_i
+\end{align}
+$$
+
+$$
+\begin{align}
+&= \int_{\Omega^{+}} \sum_{p} \left[l_p \cdot B_p\left(\omega_i\right)\right] \cdot \rho \cdot \cos\theta_i V\left(\omega_i\right) \,\mathrm{d}\omega_i \end{align}
+$$
+
+$$
+\begin{align}
+&= \rho \sum_{p} l_p  \underset{ \text{恰好是光線傳輸用球諧函數線性表示} }{ \underbrace{ \int_{\Omega^{+}} B_p\left(\omega_i\right) \cdot \cos\theta_i V\left(\omega_i\right)  \,\mathrm{d}\omega_i }}
+\end{align}
+$$
+
+$$
+\begin{align}
+&= \rho \sum_{p} l_p \cdot T_p \left(\omega_i\right) = \rho \cdot\begin{bmatrix} l_0 & l_1 & \cdots l_p \end{bmatrix} \begin{bmatrix} T_0 \left(\omega_i\right) & T_1 \left(\omega_i\right) & \cdots & T_p \left(\omega_i\right) \end{bmatrix}^T \end{align} \\
 $$
 
 另一種理解方式：
