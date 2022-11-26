@@ -210,7 +210,7 @@ $$
 
 $$
 \begin{align}
-&= \rho \sum_{p} l_p \cdot T_p \left(\omega_i\right) = \rho \cdot\begin{bmatrix} l_0 & l_1 & \cdots l_p \end{bmatrix} \begin{bmatrix} T_0 \left(\omega_i\right) & T_1 \left(\omega_i\right) & \cdots & T_p \left(\omega_i\right) \end{bmatrix}^T \end{align} \\
+&= \rho \sum_{p} l_p \cdot T_p \left(\omega_i\right) = \rho \cdot\begin{bmatrix} l_0 & l_1 & \cdots l_p \end{bmatrix} \begin{bmatrix} T_0 \left(\omega_i\right) & T_1 \left(\omega_i\right) & \cdots & T_p \left(\omega_i\right) \end{bmatrix}^T \end{align}
 $$
 
 另一種理解方式：
