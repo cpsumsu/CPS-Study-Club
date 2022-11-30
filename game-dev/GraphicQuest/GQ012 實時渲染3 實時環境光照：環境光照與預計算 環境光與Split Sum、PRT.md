@@ -103,7 +103,7 @@ $$
 $$
 
 $$
-\begin{align} &=  R_0 \int_{\Omega^{+}}  \frac{f_{r}\left( p ,\, \omega_i ,\, \omega_o \right)}{F\left(\theta_i\right)} \left[ 1 - \left(1-\cos\theta_i\right)^5 \right] \cos\theta_i \mathrm{d}\omega_i + \int_{\Omega^{+}}  \frac{f_{r}\left( p ,\, \omega_i ,\, \omega_o \right)}{F\left(\theta_i\right)}  \left(1-\cos\theta_i\right)^5  \cos\theta_i \mathrm{d}\omega_i \end{align}
+\begin{align} &=  R_0 \int_{\Omega^{+}}  \frac{f_{r}\left( p ,\, \omega_i ,\, \omega_o \right)}{F\left(\theta_i\right)} \left[ 1 - \left(1-\cos\theta_i\right)^5 \right] \cos\theta_i \mathrm{d}\omega_i + \int_{\Omega^{+}}  \frac{f_{r}\left( p ,\, \omega_i ,\, \omega_o \right)}{F\left(\theta_i\right)}  \left(1-\cos\theta_i\right)^5  \cos\theta_i  \mathrm{d}\omega_i \end{align}
 $$
 
 於是定積分不再依賴於基底顏色 R0，在預計算 $\frac{f_{r}\left( p ,, \omega_i ,, \omega_o \right)}{ F\left(\theta\right)}$ 時只需要考慮粗糙程度和入射角的餘弦即可。
