@@ -10,7 +10,6 @@
 - 計算機圖形學 筆記 
   - 相機與透鏡
 - 計算機圖形學筆記 - 實時渲染篇 
-  - 實時渲染3 實時環境光照：Split Sum、PRT
   - 實時渲染4 3D空間GI的LPV算法和VXGI算法 SSAO算法
   - 實時渲染5 高級著色 BRDF及相關技術
 - C++ 雜項 筆記
@@ -69,7 +68,7 @@
 - 計算機圖形學筆記 - 實時渲染篇 (Real–time Rendering)
   1. [實時渲染1_Shadow Mapping、PCSS、VSSM、SDF Shadows](./GraphicQuest/GQ009%20實時渲染1_Shadow%20Mapping、PCSS、VSSM、SDF%20Shadows.md)
   2. [實時渲染2 延遲渲染 Deferred Rendering](./GraphicQuest/GQ010%20實時渲染2%20延遲渲染%20Deferred%20Rendering.md)
-  3. [實時渲染3 實時環境光照：Split Sum、PRT](./GraphicQuest/GQ010%20實時渲染2%20延遲渲染%20Deferred%20Rendering.md)
+  3. [實時渲染3 實時環境光照：Split Sum、PRT](./GraphicQuest/GQ012%20實時渲染3%20實時環境光照：環境光照與預計算%20環境光與Split%20Sum、PRT.md)
   4. [實時渲染4 3D空間GI的LPV算法和VXGI算法 SSAO算法](./GraphicQuest/GQ013%20實時渲染4%203D空間GI的LPV算法和VXGI算法%20SSAO算法.md)
   5. [實時渲染5 高級著色 BRDF及相關技術](./GraphicQuest/GQ014%20實時渲染5%20高級著色%20BRDF及相關技術.md)
 - C++ DirectX 11 筆記 (源於Chili架構):
