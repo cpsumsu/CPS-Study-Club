@@ -31,3 +31,4 @@
 28. [2006. 差的绝对值为 K 的数对数目](https://leetcode.cn/problems/count-number-of-pairs-with-absolute-difference-k/)
 29. [1929. 数组串联](https://leetcode.cn/problems/concatenation-of-array/)
 30. [1108. IP 地址无效化](https://leetcode.cn/problems/defanging-an-ip-address/)
+31. 
