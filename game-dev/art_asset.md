@@ -51,13 +51,20 @@
   - 各類素材、教程、開發工具
   -  獨立遊戲開發者聚集地
 - [Open Source Game Clones](https://osgameclones.com/)
-  -   開源
-  -   各種老遊戲的開源重製版本
-  -   想要復刻某款遊戲可以參考代碼、
-  -   借用美術素材
+  - 開源
+  - 各種老遊戲的開源重製版本
+  - 想要復刻某款遊戲可以參考代碼、
+  - 借用美術素材
 - [NvlMaker 共享素材站](https://www.nvlmaker.net/material.html)
-  -   免費
-  -   視覺小說素材
+  - 免費
+  - 視覺小說素材
 - [Vroid Hub](https://hub.vroid.com/)
-  -   免費
-  -   用於VR、MMD、虛擬主播等的人物模型，二次元風格
+  - 免費
+  - 用於VR、MMD、虛擬主播等的人物模型，二次元風格
+- [DAZstudio]() 
+  - DAZstudio全稱Digital Art Zone studio
+  - DazStudio主要是藉用Dazshop（官方產品商城）Renderosity,Renderotica（第三方產品商城 R18 R18-G素材居多）和其他一些零零碎碎第三方資源網站的original等等龐大的模型庫來製作3D數字藝術的。強烈推薦zonegfx
+  - Daz並不是一款建模軟件，你可以把它認為是更自由更專業的《閃耀暖暖》。
+  - 就算你對3D藝術領域一竅不通，你也能在很短的一段時間內創作出自己的作品。更無需什麼建模知識，也不需要被雜七雜八太過於復雜的渲染器各項參數困擾。 （當然，如果你想在Daz裡玩出花來就必須要對這些知識進行全面的了解）
+  - 正如此軟件的介紹一樣，免費的Daz Studio被初學者和專業人士使用，可以創作出震撼的3D藝術。當然你也可以把它作為繪畫的人體，透視參考。]
+  - [教學傳送門](https://www.zhihu.com/question/349290837)
