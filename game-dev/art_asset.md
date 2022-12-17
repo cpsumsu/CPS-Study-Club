@@ -72,3 +72,9 @@
 - [Vroid Hub](https://hub.vroid.com/)
   - 免費
   - 用於VR、MMD、虛擬主播等的人物模型，二次元風格
+- [posemaniacs](https://www.posemaniacs.com/)
+- [line of action](https://line-of-action.com/)
+- [Sketchfab](https://sketchfab.com/)
+- [kamitokatachi](www.kamitokatachi.com)
+- [Quickposes](https://www.quickposes.com/en/gestures/timed)
+- [BODIES IN MOTION](https://www.bodiesinmotion.photo/)
