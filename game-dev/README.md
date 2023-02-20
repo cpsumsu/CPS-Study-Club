@@ -95,7 +95,13 @@
   5. [速通LeetCode水題一百道](./C++SideQuest/SQ005%20速通LeetCode水題一百道.md)
 - 遊戲開發工具包: 
   1. [免費／付費美術資源地址整合](art_asset.md)
-  2. 
+
+- 手寫軟光珊:
+  1. [手寫軟光柵1](/game-dev/GraphicQuest/GQ021%20手寫軟光柵1.md)
+  2. [手寫軟光柵2](/game-dev/GraphicQuest/GQ022%20手寫軟光柵2.md)
+  3. [手寫軟光柵3](/game-dev/GraphicQuest/GQ023%20手寫軟光柵3.md)
+  4. [手寫軟光柵4](/game-dev/GraphicQuest/GQ024%20手寫軟光柵4.md)
+  5. [手寫軟光柵5](/game-dev/GraphicQuest/GQ025%20手寫軟光柵5.md)
 
 # 遊戲編程?
 
