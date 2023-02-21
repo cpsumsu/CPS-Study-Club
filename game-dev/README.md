@@ -102,6 +102,7 @@
   3. [手寫軟光柵3](/game-dev/GraphicQuest/GQ023%20手寫軟光柵3.md)
   4. [手寫軟光柵4](/game-dev/GraphicQuest/GQ024%20手寫軟光柵4.md)
   5. [手寫軟光柵5](/game-dev/GraphicQuest/GQ025%20手寫軟光柵5.md)
+  6. [手寫軟光柵6](/game-dev/GraphicQuest/GQ026%20手寫軟光柵6.md)
 
 # 遊戲編程?
 
