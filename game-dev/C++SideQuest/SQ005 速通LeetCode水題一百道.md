@@ -21,4 +21,14 @@
 18. [剑指 Offer 53 - II. 0～n-1中缺失的数字](https://leetcode.cn/problems/que-shi-de-shu-zi-lcof/)
 19. [1486. 数组异或操作](https://leetcode.cn/problems/xor-operation-in-an-array/)
 20. [1009. 十进制整数的反码](https://leetcode.cn/problems/complement-of-base-10-integer/)
-21. 
+21. [476. 数字的补数](https://leetcode.cn/problems/number-complement/)
+22. [剑指 Offer 15. 二进制中1的个数](https://leetcode.cn/problems/er-jin-zhi-zhong-1de-ge-shu-lcof/)
+23. [191. 位1的个数](https://leetcode.cn/problems/number-of-1-bits/)
+24. [461. 汉明距离](https://leetcode.cn/problems/hamming-distance/)
+25. [2220. 转换数字的最少位翻转次数](https://leetcode.cn/problems/minimum-bit-flips-to-convert-number/)
+26. [1342. 将数字变成 0 的操作次数](https://leetcode.cn/problems/number-of-steps-to-reduce-a-number-to-zero/)
+27. [1492. n 的第 k 个因子](https://leetcode.cn/problems/the-kth-factor-of-n/)
+28. [2006. 差的绝对值为 K 的数对数目](https://leetcode.cn/problems/count-number-of-pairs-with-absolute-difference-k/)
+29. [1929. 数组串联](https://leetcode.cn/problems/concatenation-of-array/)
+30. [1108. IP 地址无效化](https://leetcode.cn/problems/defanging-an-ip-address/)
+31. 

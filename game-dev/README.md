@@ -7,15 +7,17 @@
 個人學習遊戲編程，收錄於CPSStudyClub，以後可能再整理一下倉庫內的目錄
 
 ## ——⚠️施工中的文章⚠️——
-- 計算機圖形學 筆記 
-  - 相機與透鏡
+- 美術篇
+  - 模型基礎和設計
+- 計算機圖形學筆記
+  - 深度與模板測試
 - 計算機圖形學筆記 - 實時渲染篇 
   - 實時渲染4 3D空間GI的LPV算法和VXGI算法 SSAO算法
   - 實時渲染5 高級著色 BRDF及相關技術
 - C++ 雜項 筆記
   - 速通LeetCode水題一百道
-- Unity 筆記
-  - Unity 官網教學標記
+- 修正大部分Markdown文檔的數學格式
+  - https://gist.github.com/jesshart/8dd0fd56feb6afda264a0f7c3683abbf
 
 ## 值得一看的b站影片
 - [GAMES-Webinar b站主頁](https://space.bilibili.com/512313464)
@@ -95,6 +97,14 @@
   5. [速通LeetCode水題一百道](./C++SideQuest/SQ005%20速通LeetCode水題一百道.md)
 - 遊戲開發工具包: 
   1. [免費／付費美術資源地址整合](art_asset.md)
+
+- 手寫軟光珊:
+  1. [手寫軟光柵1](/game-dev/GraphicQuest/GQ021%20手寫軟光柵1.md)
+  2. [手寫軟光柵2](/game-dev/GraphicQuest/GQ022%20手寫軟光柵2.md)
+  3. [手寫軟光柵3](/game-dev/GraphicQuest/GQ023%20手寫軟光柵3.md)
+  4. [手寫軟光柵4](/game-dev/GraphicQuest/GQ024%20手寫軟光柵4.md)
+  5. [手寫軟光柵5](/game-dev/GraphicQuest/GQ025%20手寫軟光柵5.md)
+  6. [手寫軟光柵6](/game-dev/GraphicQuest/GQ026%20手寫軟光柵6.md)
 
 # 遊戲編程?
 
