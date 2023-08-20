@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-// #define DEBUG
+#define DEBUG
 
 // origin 
 template<typename T>
@@ -34,8 +34,13 @@ struct po_remove_reference<T &&> {
 int main() {
     
     po_remove_reference<decltype(10)>();    
+    
     int i = 10;
     po_remove_reference<decltype(i)>();
+
+    int &y = i;
+    po_remove_reference<decltype(y)>();
+
     int &&j = 10;
     po_remove_reference<decltype(j)>();
     return 0;
