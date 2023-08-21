@@ -1,8 +1,9 @@
-// partial specialization, possible implementation of remove_reference<>
+// partial specialization and general specialization, possible implementation of remove_reference<>
 #include <iostream>
 using namespace std;
 
 #define DEBUG
+#define SPECIALIZATION
 
 // origin 
 template<typename T>
@@ -31,17 +32,11 @@ struct po_remove_reference<T &&> {
     typedef T type;
 };
 
-int main() {
-    
-    po_remove_reference<decltype(10)>();    
-    
-    int i = 10;
-    po_remove_reference<decltype(i)>();
-
-    int &y = i;
-    po_remove_reference<decltype(y)>();
-
-    int &&j = 10;
-    po_remove_reference<decltype(j)>();
-    return 0;
-}
+// testing priority between general and partial specialization
+#ifdef SPECIALIZATION
+template <>
+struct po_remove_reference<int &> {
+    po_remove_reference() { cout << "int &" << endl; }
+    typedef int type;
+};
+#endif
