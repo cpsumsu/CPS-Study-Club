@@ -1,3 +1,5 @@
+// #visiblility of namespace #namespace and function
+
 // since A::b and b are not in the same scope, so local variable b hide namespace member name,
 // so need to call namespace member b explicitly
 #include <iostream>
