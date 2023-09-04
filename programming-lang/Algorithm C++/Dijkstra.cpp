@@ -5,7 +5,7 @@ using namespace std;
 template<typename T>
 ostream &operator<<(ostream &os, const vector<T> &p) { for (auto x : p) os << x << ' '; return os; }
 
-#define INF 99
+#define INF 1e9
 
 class adjacency_matrix {
 public:
@@ -59,17 +59,15 @@ vector<int> dijkstra(vector<vector<int>> &A) {
     for (int i = 0; i < M - 1; i++) {
         int min = INF;
         for (int j = 0; j < M; j++) {
-            if (visit[j] == 0 && dist[j] < min) {
+            if (visit[j] == false && min > dist[j]) {
                 min = dist[j];
                 u = j;
             }
         }
         visit[u] = true;
         for (int v = 0; v < M; v++) {
-            if (A[u][v] != INF) {
-                if (dist[v] > dist[u] + A[u][v])
-                    dist[v] = dist[u] + A[u][v];
-            }
+            if (dist[v] > dist[u] + A[u][v])
+                dist[v] = dist[u] + A[u][v];
         }
     }
 
