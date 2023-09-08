@@ -16,6 +16,8 @@
   - 實時渲染5 高級著色 BRDF及相關技術
 - C++ 雜項 筆記
   - 速通LeetCode水題一百道
+- 面經
+  - 主要內容為網上收集的各大面經、考試、測試題信息雜項等
 - 修正大部分Markdown文檔的數學格式
   - https://gist.github.com/jesshart/8dd0fd56feb6afda264a0f7c3683abbf
 
