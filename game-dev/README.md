@@ -18,6 +18,8 @@
   - 速通LeetCode水題一百道
 - 面經
   - 主要內容為網上收集的各大面經、考試、測試題信息雜項等
+- UE5.2 筆記
+  - 主要內容為 UE5.2虛幻引擎 開發
 - 修正大部分Markdown文檔的數學格式
   - https://gist.github.com/jesshart/8dd0fd56feb6afda264a0f7c3683abbf
 
