@@ -29,7 +29,6 @@
   - GAMES101, GAMES202, GAMES104 都是很優質的系列!
 - [CSAPP-深入理解计算机系统](https://www.bilibili.com/video/BV1cD4y1D7uR)
   - 源於書本 - 深入理解计算机系统，不論是中文和英文都難以理解，這裡有高質量動畫影片能通俗易懂計算機原理
-- []
 ## 值得一看的YT影片
 - [C++ 3D DirectX 11 Tutorial](https://www.youtube.com/watch?v=2NOgrpXks9A&t=1s&ab_channel=ChiliTomatoNoodle)
   - 由ChiliTomatoNoodle發佈的C++ 3D DirectX 11教學，一個很硬核的教學系列，內含主要為DirectX 11 API和軟件工程等知識，學習前需要了解基本的圖形學數學知識和使用github等技巧，Chili也在Discord活躍中，在c++領域中也有許多相關影片
