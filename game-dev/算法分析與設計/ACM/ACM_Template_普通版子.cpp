@@ -19,12 +19,22 @@ const int N = 1e5 + 10; // 用於定義常量數組
 #define MAXN ((int) 1e5) //
 #define MAXM ((int) 1e5)
 #define MAXPROD ((int) 1e5)
-lli var1, var2;
-#define rep(i, l, u) for (lli i = l; i <= u; i++)
+
+int moves[4][2] = { {0,1},{1,0},{0,-1},{-1,0} }; // 4向移動 順時針
+// int moves[8][2] = { {0,1},{1,0},{-1,0},{0,-1}, {1,1},{-1,1},{1,-1},{-1,-1} }; // 8向移動
+// int moves[6][2] = { {0,1},{1,0},{1,-1},{0,-1},{-1,0},{-1,1} }; // 六邊移動 (網格六邊形專用)
 
 int gcd(int a, int b)
 {
 	return b == 0 ? a : gcd(b, a % b);
+}
+
+bool isprime(int x)
+{
+	if (x < 2) return false;
+	for (int i = 2; i * i <= x; ++i)
+		if (x % i == 0) return false;
+	return true;
 }
 
 int main()
