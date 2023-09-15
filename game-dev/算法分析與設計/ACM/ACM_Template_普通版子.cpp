@@ -29,11 +29,22 @@ int gcd(int a, int b)
 	return b == 0 ? a : gcd(b, a % b);
 }
 
+// 檢查是否是質數
 bool isprime(int x)
 {
 	if (x < 2) return false;
 	for (int i = 2; i * i <= x; ++i)
 		if (x % i == 0) return false;
+	return true;
+}
+
+// 檢查是否是回文數、回文串
+bool ok(int i)
+{
+	string s = to_string(i);
+	int n = s.size();
+	for (int i = 0; i < n; ++i)
+		if (s[i] != s[n - 1 - i]) return false;
 	return true;
 }
 
