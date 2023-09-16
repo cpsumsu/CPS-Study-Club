@@ -19,34 +19,63 @@ const int N = 1e5 + 10; // 用於定義常量數組
 #define MAXN ((int) 1e5) //
 #define MAXM ((int) 1e5)
 #define MAXPROD ((int) 1e5)
-lli var1, var2;
-#define rep(i, l, u) for (lli i = l; i <= u; i++)
 
 int gcd(int a, int b)
 {
-	return b == 0 ? a : gcd(b, a % b);
+    return b == 0 ? a : gcd(b, a % b);
 }
 
-int A[N];
-vector<vector<int>> g;
-int m, n;
-// 建圖模版１ init graph 無向邊
-void initg(int i, int j)
+int moves[4][2] = { {0,1},{1,0},{0,-1},{-1,0} }; // 4向移動
+// int moves[8][2] = { {0,1},{1,0},{-1,0},{0,-1}, {1,1},{-1,1},{1,-1},{-1,-1} }; // 8向移動
+// int moves[6][2] = { {0,1},{1,0},{1,-1},{0,-1},{-1,0},{-1,1} }; // 六邊移動 (網格六邊形專用)
+
+int gcd(int a, int b)
 {
-	g[i].push_back(j);
-	g[j].push_back(i);
+    return b == 0 ? a : gcd(b, a % b);
+}
+
+// static const int N = 1010; // 如题：二维数组大小的在3到1000范围内
+int father[N];
+int n; // 边的数量
+
+// 并查集初始化
+void ginit() {
+    for (int i = 1; i <= n; ++i) {
+        father[i] = i;
+    }
+}
+
+// 并查集里寻根的过程
+int find(int u) {
+    return u == father[u] ? u : father[u] = find(father[u]);
+}
+
+// 判断 u 和 v是否找到同一个根
+bool same(int u, int v) {
+    u = find(u);
+    v = find(v);
+    return u == v;
+}
+
+// 将v->u 这条边加入并查集
+void join(int u, int v) {
+    u = find(u);
+    v = find(v);
+    if (u == v) return;
+    father[v] = u;
 }
 
 int main()
 {
-	// 這裡是加速 cin，如果確定代碼沒有問題但又過不了，可以刪掉
-	cin.tie(0)->sync_with_stdio(0);
-	cin.exceptions(cin.failbit);
-	int t; // 測試用例
-	cin >> t;
-	for (int i = 0; i < t; ++i)
-	{
+    // 這裡是加速 cin，如果確定代碼沒有問題但又過不了，可以刪掉
+    cin.tie(0)->sync_with_stdio(0);
+    cin.exceptions(cin.failbit);
+    int t; // 測試用例
+    cin >> t;
+    ginit(); // 并查集初始化
+    for (int i = 0; i < t; ++i)
+    {
 
-	}
-	return 0;
+    }
+    return 0;
 }
