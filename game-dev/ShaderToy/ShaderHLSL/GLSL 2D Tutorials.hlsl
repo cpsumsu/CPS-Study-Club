@@ -1,12 +1,12 @@
 #iChannel0 "file://Texture/rock.png" // Note the wildcard '{}'
-#iChannel0::MinFilter "LinearMipMapNearest"
-#iChannel0::WrapMode "Repeat"
+// #iChannel0::MinFilter "LinearMipMapNearest"
+// #iChannel0::WrapMode "Repeat"
 #iChannel1 "file://Texture/brick.png" // Note the wildcard '{}'
-#iChannel1::MinFilter "LinearMipMapNearest"
-#iChannel1::WrapMode "Repeat"
+// #iChannel1::MinFilter "LinearMipMapNearest"
+// #iChannel1::WrapMode "Repeat"
 #iChannel2 "file://Texture/sky.png" // Note the wildcard '{}'
-#iChannel2::MinFilter "LinearMipMapNearest"
-#iChannel2::WrapMode "Repeat"
+// #iChannel2::MinFilter "LinearMipMapNearest"
+// #iChannel2::WrapMode "Repeat"
 
 // #iChannel0::MinFilter "NearestMipMapNearest"
 // #iChannel0::MagFilter "Nearest"
@@ -46,7 +46,7 @@ Please fix my coding errors and grammar errors. :-)
 */
 
 // choose the tutorial by changing the number and compiling the shader again
-#define TUTORIAL 10
+#define TUTORIAL 1
 
 /* TUTORIAL LIST
  1 VOID. BLANK SCREEN.
