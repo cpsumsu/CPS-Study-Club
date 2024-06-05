@@ -1,3 +1,39 @@
+#iChannel0 "file://Texture/rock.png" // Note the wildcard '{}'
+#iChannel0::MinFilter "LinearMipMapNearest"
+#iChannel0::WrapMode "Repeat"
+#iChannel1 "file://Texture/brick.png" // Note the wildcard '{}'
+#iChannel1::MinFilter "LinearMipMapNearest"
+#iChannel1::WrapMode "Repeat"
+#iChannel2 "file://Texture/sky.png" // Note the wildcard '{}'
+#iChannel2::MinFilter "LinearMipMapNearest"
+#iChannel2::WrapMode "Repeat"
+
+// #iChannel0::MinFilter "NearestMipMapNearest"
+// #iChannel0::MagFilter "Nearest"
+// #iChannel0::WrapMode "Repeat"
+
+// export enum TextureMagFilter {
+//     Linear  = 'Linear',
+//     Nearest = 'Nearest',
+// }
+// export enum TextureMinFilter {
+//     Nearest                 = 'Nearest',
+//     NearestMipMapNearest    = 'NearestMipMapNearest',
+//     NearestMipMapLinear     = 'NearestMipMapLinear',
+//     Linear                  = 'Linear',
+//     LinearMipMapNearest     = 'LinearMipMapNearest',
+//     LinearMipMapLinear      = 'LinearMipMapLinear',
+// }
+// export enum TextureWrapMode {
+//     Repeat  = 'Repeat',
+//     Clamp   = 'Clamp',
+//     Mirror  = 'Mirror',
+// }
+// export enum TextureType {
+//     Texture2D   = 'Texture2D',
+//     CubeMap     = 'CubeMap',
+// }
+
 /*
 by Uğur Güney. March 8, 2014. 
 
@@ -10,7 +46,7 @@ Please fix my coding errors and grammar errors. :-)
 */
 
 // choose the tutorial by changing the number and compiling the shader again
-#define TUTORIAL 2
+#define TUTORIAL 26
 
 /* TUTORIAL LIST
  1 VOID. BLANK SCREEN.
@@ -55,6 +91,8 @@ Please fix my coding errors and grammar errors. :-)
 // But if the GLSL script is computationally hard, then the frame
 // rate drops. (You can read the frame rate at the info bar below
 // the screen.
+// 
+// 
 //
 // Because we are not doing anything in the function
 // this shader will produce a black screen.
