@@ -46,7 +46,7 @@ Please fix my coding errors and grammar errors. :-)
 */
 
 // choose the tutorial by changing the number and compiling the shader again
-#define TUTORIAL 26
+#define TUTORIAL 10
 
 /* TUTORIAL LIST
  1 VOID. BLANK SCREEN.
@@ -92,7 +92,7 @@ Please fix my coding errors and grammar errors. :-)
 // rate drops. (You can read the frame rate at the info bar below
 // the screen.
 // 
-// 
+// ShaderToy 的入口都在 mainImage 中，如果這裡甚麼Code都沒，就會有一個黑屏。
 //
 // Because we are not doing anything in the function
 // this shader will produce a black screen.
@@ -106,6 +106,10 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 // "fragColor" is the output variable of the shader.
 // Its value determines the image on the screen.
 // This shaders sets its value to be the yellow color.
+// 
+// fragColor 是 "out vec4"，(r,g,b,a) 顏色
+// 
+// 函數會把這四維數組輸出，在正式輸出時盡量不要變動這裡的數
 //
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
@@ -123,6 +127,9 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 // (For now changing the transparancy value will have no effect)
 // A "vec4" data object can be constructed by giving 4 "float" arguments,
 // or one "vec3" and one "float" argument.
+// 
+// 有一個通常的做法時先創建 (r,g,b) 顏色，最後再設定透明度。
+// 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
 	// Here we are seperating the color and transparency parts
@@ -152,6 +159,10 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 // https://kuler.adobe.com/create/color-wheel/
 // http://www.colourlovers.com/palettes
 // http://www.colourlovers.com/colors
+//
+// 當然你也可以把vec3拆成三個 float 數值，然後再合併。
+//
+// 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
 	// play with these numbers:
@@ -200,6 +211,19 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 // This is the most important difference of shader programming. We'll
 // come to this point again and again
 //
+// fragCoord 是一個 input variable，它會告訴你現在在螢幕上的哪個 pixel。
+// 它的中心點是左下角，而 x 值會向右增加，y 值會向上增加。
+//
+// main 函式會被執行在螢幕上的每個 pixel 上。每次呼叫時，gl_FracCoord
+// 會告訴你現在在螢幕上的哪個 pixel。
+//
+// GPU 的核心很多，所以，可以同時計算不同 pixel 的計算。
+// 這可以讓計算速度比一個一個計算在 CPU 上更快。但，它也有一個重要的限制：
+// 一個 pixel 的值不能隨便的依靠另一個 pixel 的值。
+// (計算是平行計算，所以不可能知道哪一個會先完成)
+// 一個 pixel 的結果只能依靠 pixel 的座標 (以及一些其它的 input variable)。
+// 這個點是 shader 程式的最大不同點。我們會再來講到這個點。
+// 
 // Let's draw something that is not a solid color.
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
@@ -237,6 +261,18 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 // the number of pixel. It is given us in the variable "iResolution".
 // "iResolution.x" is the width of the frame, and
 // "iResolution.y" is the height of the frame
+// 
+// "iResolution.x" 為螢幕寬度，而 "iResolution.y" 則是螢幕高度。
+// 我們可以利用 "iResolution" 這個變數來取得螢幕的寬度與高度。
+// 
+// 注意：
+// "iResolution" 這個變數的單位是 pixel。
+// 因此，我們不能用 "iResolution.x" 來表示螢幕的寬度，
+// 而是要用 "iResolution.x / 2.0" 來表示螢幕的寬度的一半。
+// 因為 "iResolution.x" 會是螢幕的寬度乘以螢幕的解析度。
+// 
+// 可以用三目運算符代替if-else
+// 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
 	vec3 color1 = vec3(0.741, 0.635, 0.471);
@@ -265,6 +301,13 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 // the upper side.
 //
 // Using "r" let's divide the screen into 3 parts.
+// 
+// 因為每次都用iResolution.x很煩，你可以用以下"r"的方式來表示螢幕的寬度
+// 而不是用iResolution.x。
+// 
+// 例如，在1440x900的螢幕上，iResolution.x是1440，
+// 因此r.x是1440。
+// 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
 	vec2 r = vec2(fragCoord.x / iResolution.x,
@@ -306,6 +349,17 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 
 #elif TUTORIAL == 8
 // HORIZONTAL AND VERTICAL LINES
+// 這裡有更短的方式: 
+// 
+// vec2( fragCoord.xy / iResolution.xy );
+// 
+// 下面介紹了三種畫直線的方法: 
+// 1. if( r.x < rightCoord && r.x > leftCoord ) pixel = color1;
+// 2. if(abs(r.x - lineCoordinate) < lineThickness) pixel = color2;
+// 3. // a horizontal line
+// if(abs(r.y - 0.6)<0.01) pixel = color3;
+// 
+// 會發現最後的黃線把前面的直線蓋住了。因為它是最後一個被畫上去的
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
 	vec2 r = vec2( fragCoord.xy / iResolution.xy );
@@ -355,6 +409,9 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 //
 // Let's use a for loop and horizontal and vertical lines to draw
 // a grid of the coordinate center
+// 
+// 來用for-loop畫一個表格
+// 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
 	vec2 r = vec2( fragCoord.xy / iResolution.xy );
