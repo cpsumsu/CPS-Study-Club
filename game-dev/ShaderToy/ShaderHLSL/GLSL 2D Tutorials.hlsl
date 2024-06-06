@@ -46,7 +46,7 @@ Please fix my coding errors and grammar errors. :-)
 */
 
 // choose the tutorial by changing the number and compiling the shader again
-#define TUTORIAL 1
+#define TUTORIAL 16
 
 /* TUTORIAL LIST
  1 VOID. BLANK SCREEN.
@@ -447,6 +447,12 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 // [0,1]x[0,1], lets map it to [-1,1]x[-1,1]. This way the coordinate
 // (0,0) will not be at the lower left corner of the screen, but in the
 // middle of the screen.
+//
+// 原本是 vec2 r = vec2( fragCoord.xy / iResolution.xy ); 也就是說 渲染範圍: [0, iResolution.x]x[0, iResolution.y]
+// 改成是 vec2 r = vec2( fragCoord.xy - 0.5*iResolution.xy ); 
+// 			   r = 2.0 * r.xy / iResolution.xy;
+// 之後，就可以將範圍移動到 [-1.0, 1.0]
+//
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
 	vec2 r = vec2( fragCoord.xy - 0.5*iResolution.xy );
@@ -467,6 +473,9 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 	// This time instead of going over a loop for every pixel
     // we'll use mod operation to achieve the same result
     // with a single calculation (thanks to mikatalk)
+	// 
+	// mod(r.x, tickWidth) 簡化了float i=0.0; i<1.0; i+=tickWidth，
+	// 在GPU中會計算每個在(x,y)中的像素，所以只需要用mod運算判斷合法即可
 	const float tickWidth = 0.1;
 	if( mod(r.x, tickWidth) < 0.008 ) pixel = gridColor;
     if( mod(r.y, tickWidth) < 0.008 ) pixel = gridColor;
@@ -488,9 +497,16 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 // than of its height.
 // So, to keep the aspect ratio, we should not map the actual distances
 // [0, iResolution.x] and [0, iResolution.y] to the same interval.
+// 
+// 簡單來說畫面被拉伸了，所以要讓畫面看起來像正方形，就要讓畫面被拉伸的長寬比相同
+// 也就是說，我們要讓 [0, iResolution.x] 和 [0, iResolution.y] 對應的長寬比相同
+// 把 r = 2.0 * r.xy / iResolution.xy; 改成 r = 2.0 * r.xy / iResolution.y; 或者
+//    r = 2.0 * r.xy / iResolution.x;
+//
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
 	vec2 r = vec2( fragCoord.xy - 0.5*iResolution.xy );
+	// 之前這裡是 r = 2.0 * r.xy / iResolution.xy;
 	r = 2.0 * r.xy / iResolution.y;
 	// instead of dividing r.x to iResolution.x and r.y to iResolution.y
 	// divide both of them to iResolution.y.
@@ -530,6 +546,11 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 // coordinate is inside this disk, put that color for the pixel"
 // The indirect commands are a bit counter intuitive until you
 // get used to that way of thinking.
+// 
+// 有以下公式
+// 圓形公式: x^2 + y^2 = 1
+// 這其實和求向量長度的公式一樣: 所以也可以有 length(v) < 0.3 
+//
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
 	vec2 r =  2.0*vec2(fragCoord.xy - 0.5*iResolution.xy)/iResolution.y;
@@ -545,6 +566,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 	// expression of that shape.
 	// A circle is the set of points that has the same distance from
 	// it its center. The distance is called radius.
+
 	// The distance from the coordinate center is sqrt(x*x + y*y)
 	// Fix the distance as the radius will give the formula for
 	// a circle at the coordinate center
@@ -564,6 +586,11 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 		pixel = colYellow;
 	}
 	
+	// 位移圓心的方法，(r.x - c.x, r.y - c.y)
+	// 也是向量相減的方式: 
+	// vec2 center = vec2(0.9, -0.4);
+	// vec2 d = r - center;
+	// 
 	// draw a disk of which center is not at (0,0).
 	// Say the center is at c: (c.x, c.y). 
 	// The distance of any point r: (r.x, r.y) to c is 
@@ -619,6 +646,8 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 // is changed with the "color" argument. If it is not satified, the
 // "pixel" is left untouched and keeps it previous value (which was the
 // "bgColor".
+//
+// inout 關鍵字: 傳入的數據會被修改，像是 c++中的 &
 void disk(vec2 r, vec2 center, float radius, vec3 color, inout vec3 pixel) {
 	if( length(r-center) < radius) {
 		pixel = color;
@@ -659,6 +688,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 // The final value only depends to the last function that manipulated
 // the pixel. There are no mixtures between layers.
 
+// "aliasing" 就是這些許圓形外邊的不規則齒狀，下面會講如何解決此類問題
 
 #elif TUTORIAL == 14
 // BUILT-IN FUNCTIONS: STEP
@@ -668,6 +698,8 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 // 
 // f(x0, x) = {1 x>x0, 
 //            {0 x<x0
+
+// 上面是step函數，在hlsl中，如果 x0 大於 x，返回0
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
 	vec2 r =  2.0*vec2(fragCoord.xy - 0.5*iResolution.xy)/iResolution.y;
@@ -726,6 +758,9 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 // f(x, min, max) = { max x>max
 //                  { x   max>x>min
 //                  { min min>x
+// 
+// clamp 更多用於漸變
+//
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
 	vec2 r =  2.0*vec2(fragCoord.xy - 0.5*iResolution.xy)/iResolution.y;
@@ -785,6 +820,9 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 // sudden jump from 0 to 1 at the edge, it makes a smooth transition
 // in a given interval
 // http://en.wikipedia.org/wiki/Smoothstep
+// 
+// SMOOTHSTEP 函數可以去看一下 wiki
+// 
 void mainImage( out vec4 fragColor, in vec2 fragCoord )
 {
 	vec2 r =  2.0*vec2(fragCoord.xy - 0.5*iResolution.xy)/iResolution.y;
