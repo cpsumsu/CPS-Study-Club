@@ -247,6 +247,7 @@ new Fn(); // 不報錯
 實驗：
 
 <img src="https://s2.loli.net/2025/04/10/8Z1epLWPQ2RaIDr.png" width="500px">
+
 #### `new.target` 用於給普通函數去調節造函數的性質
 
 若直接執行，`new.target`為`undefined`；若使用`new`調用，則`new.target`為函數對象。因此，我們可以透過`new.target`來改造普通函數，用於約束它“必須用作構造函數”或“不可用作構造函數”。
