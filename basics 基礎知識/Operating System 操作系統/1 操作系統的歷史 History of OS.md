@@ -44,6 +44,7 @@ Unix最初運行在貝爾實驗室的PDP-11計算機上。1973年，Ritchie發�
 赫爾辛基大學的大學生 Linus Torvalds 想要學習操作系統，但是當時UNIX已被商業化且閉源（即源代碼不對外公開）。因此，Linus決定親自寫一個操作系統並將其開源。
 
 > Linux源碼：https://github.com/torvalds/linux
+> 
 > Linux社區開發文檔：https://www.kernel.org/doc/html/latest/
 
 <img src="https://images.steamusercontent.com/ugc/2040739975502125035/E69DDD0360D7AEECA55156D5B5FAD509198D3F0C/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" width="300px">
@@ -70,7 +71,9 @@ Linux發行版之外，我們常見的安卓操作系統 (Android) 也是基於L
 </div>
 
 > 圖1：Linux的吉祥物，是一只叫Tux的企鵝。*“企鹅就该有点呆萌、有点诙谐，这才是Linux该有的样子。”*
+> 
 > 圖2：Ubuntu的用戶界面。
+> 
 > 圖3：YouTuber [@LinusTechTips](https://www.youtube.com/@LinusTechTips) 體驗純AOSP原生安卓的[視頻](https://www.youtube.com/watch?v=-hlRB2izres)。
 
 # 1.5 PC-era (1980-今)
