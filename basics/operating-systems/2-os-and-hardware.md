@@ -17,6 +17,8 @@ An OS is the interface between the user and the architecture. User manages hardw
 - Files 文件管理
 	- Coordinates how disk space is used for files. 規定磁盤空間如何為了存儲文件而分配
 
+## 2.1.2 OS Can't leave hardware!
+
 ## 2.1.2 Architectural Features Motivated by OS Services
 
 操作系統的功能實現離不開硬件的支持；同樣地，操作系統的功能也能夠影響硬件的發展。
