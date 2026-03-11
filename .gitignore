@@ -1,7 +1,8 @@
 # Editor directories and files
 .idea
 .DS_Store
-.vscode/launch.json
-.vscode/c_cpp_properties.json
-.vscode/c_cpp_properties.json
+.vscode
+# .vscode/launch.json
+# .vscode/c_cpp_properties.json
+# .vscode/c_cpp_properties.json
 .obsidian
